@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.2 — 2026-09-20
+
+- Show daily token counts in 万 / 萬 and period totals in 亿 / 億 for Chinese interfaces, with two decimal places.
+- Use K / M / B for compact English counts. Preserve missing values and distinguish small positive counts from zero.
+- Keep exact totals available in a hover tooltip; chart heights and underlying token data are unchanged.
+
 ## 0.5.1 — 2026-09-20
 
 - Made the inactive ring track translucent while retaining the original center color.

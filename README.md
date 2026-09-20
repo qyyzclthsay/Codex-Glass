@@ -10,7 +10,7 @@ Windows 10 / 11 · x64 · C# / WPF
 
 [English](README.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md)
 
-![Windows](https://img.shields.io/badge/Windows-10%20%2F%2011-0078D4?style=flat-square) ![Version](https://img.shields.io/badge/version-0.5.1-4C8DF3?style=flat-square) ![MIT](https://img.shields.io/badge/license-MIT-16A085?style=flat-square)
+![Windows](https://img.shields.io/badge/Windows-10%20%2F%2011-0078D4?style=flat-square) ![Version](https://img.shields.io/badge/version-0.5.2-4C8DF3?style=flat-square) ![MIT](https://img.shields.io/badge/license-MIT-16A085?style=flat-square)
 
 [Download](https://github.com/qyyzclthsay/Codex-Glass/releases/latest) · [Report an issue](https://github.com/qyyzclthsay/Codex-Glass/issues) · [Validation](docs/VALIDATION.md)
 
@@ -49,14 +49,14 @@ In this demo, **75% allowance remains** and **40% of the five-hour window has el
 
 ## Download & get started
 
-**[Download the Windows installer](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/Codex-Glass-0.5.1-Setup-x64.exe)**
+**[Download the Windows installer](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/Codex-Glass-0.5.2-Setup-x64.exe)**
 
 | File | Purpose |
 | --- | --- |
-| [Setup-x64.exe](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/Codex-Glass-0.5.1-Setup-x64.exe) | Recommended installer, about 126 KiB |
-| [Portable-x64.exe](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/Codex-Glass-0.5.1-Portable-x64.exe) | Standalone executable, about 187 KiB |
-| [Portable-x64.zip](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/Codex-Glass-0.5.1-Portable-x64.zip) | Portable executable and licenses |
-| [SHA256SUMS](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/SHA256SUMS-0.5.1.txt) | Download checksums |
+| [Setup-x64.exe](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/Codex-Glass-0.5.2-Setup-x64.exe) | Recommended installer, about 128 KiB |
+| [Portable-x64.exe](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/Codex-Glass-0.5.2-Portable-x64.exe) | Standalone executable, about 192 KiB |
+| [Portable-x64.zip](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/Codex-Glass-0.5.2-Portable-x64.zip) | Portable executable and licenses |
+| [SHA256SUMS](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/SHA256SUMS-0.5.2.txt) | Download checksums |
 
 1. Install the official Codex desktop app or CLI on Windows 10 / 11 x64 so the official Codex executable is available locally.
 2. Install or run Codex Glass. It reads an available ChatGPT sign-in automatically. Otherwise, click “Sign in with ChatGPT” and complete sign-in on the official page.

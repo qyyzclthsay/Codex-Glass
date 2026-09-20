@@ -22,6 +22,6 @@ jobs:
         with:
           name: codex-glass-native-windows
           path: |
-            dist/Codex-Glass-0.5.1-*.exe
-            dist/Codex-Glass-0.5.1-Portable-x64.zip
+            dist/Codex-Glass-0.5.2-*.exe
+            dist/Codex-Glass-0.5.2-Portable-x64.zip
           if-no-files-found: error

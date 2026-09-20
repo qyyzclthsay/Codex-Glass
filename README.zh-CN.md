@@ -10,7 +10,7 @@ Windows 10 / 11 · x64 · C# / WPF
 
 [English](README.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md)
 
-![Windows](https://img.shields.io/badge/Windows-10%20%2F%2011-0078D4?style=flat-square) ![Version](https://img.shields.io/badge/version-0.5.1-4C8DF3?style=flat-square) ![MIT](https://img.shields.io/badge/license-MIT-16A085?style=flat-square)
+![Windows](https://img.shields.io/badge/Windows-10%20%2F%2011-0078D4?style=flat-square) ![Version](https://img.shields.io/badge/version-0.5.2-4C8DF3?style=flat-square) ![MIT](https://img.shields.io/badge/license-MIT-16A085?style=flat-square)
 
 [下载最新版](https://github.com/qyyzclthsay/Codex-Glass/releases/latest) · [反馈问题](https://github.com/qyyzclthsay/Codex-Glass/issues) · [验证记录](docs/VALIDATION.md)
 
@@ -49,14 +49,14 @@ Windows 10 / 11 · x64 · C# / WPF
 
 ## 下载与开始使用
 
-**[下载 Windows 安装包](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/Codex-Glass-0.5.1-Setup-x64.exe)**
+**[下载 Windows 安装包](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/Codex-Glass-0.5.2-Setup-x64.exe)**
 
 | 文件 | 用途 |
 | --- | --- |
-| [Setup-x64.exe](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/Codex-Glass-0.5.1-Setup-x64.exe) | 推荐安装版，约 126 KiB |
-| [Portable-x64.exe](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/Codex-Glass-0.5.1-Portable-x64.exe) | 单文件便携版，约 187 KiB |
-| [Portable-x64.zip](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/Codex-Glass-0.5.1-Portable-x64.zip) | 便携版与许可证 |
-| [SHA256SUMS](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/SHA256SUMS-0.5.1.txt) | 下载文件校验值 |
+| [Setup-x64.exe](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/Codex-Glass-0.5.2-Setup-x64.exe) | 推荐安装版，约 128 KiB |
+| [Portable-x64.exe](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/Codex-Glass-0.5.2-Portable-x64.exe) | 单文件便携版，约 192 KiB |
+| [Portable-x64.zip](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/Codex-Glass-0.5.2-Portable-x64.zip) | 便携版与许可证 |
+| [SHA256SUMS](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/SHA256SUMS-0.5.2.txt) | 下载文件校验值 |
 
 1. 在 Windows 10 / 11 x64 安装官方 Codex 桌面应用或 CLI，使本机可找到官方 Codex 可执行文件。
 2. 安装或运行 Codex Glass。已有可读取的 ChatGPT 登录状态时，会自动显示额度；否则点击“使用 ChatGPT 登录”，在官方页面完成登录。

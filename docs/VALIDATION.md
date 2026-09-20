@@ -1,5 +1,16 @@
 # Validation record — native update 2026-09-20
 
+## v0.5.2 compact token counts
+
+- 46 core checks passed, including daily counts in 万 / 萬, totals in 亿 / 億,
+  English compact units, small positive counts, actual zero and missing values.
+- The native UI suite passed. Added 7-day and 30-day chart checks in all three
+  languages, using keyboard selection to reveal a daily value. Verified exact
+  totals remain available in tooltips and visually reviewed the rendered charts.
+- Formatting only: source counts, aggregation and bar heights are unchanged.
+- Installer extraction matched the tested portable executable by SHA-256.
+  Installer: 130,599 bytes; portable executable: 196,096 bytes.
+
 ## v0.5.1 hover labels and translucent track
 
 - Kept the center color and text appearance; inactive track alpha is 82/255, with no

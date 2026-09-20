@@ -17,7 +17,7 @@ $glassSources = Get-ChildItem -LiteralPath (Join-Path $glassRoot 'native') -Filt
 $glassOutput = Join-Path $glassDist 'Codex Glass.exe'
 & $glassCompiler /nologo /utf8output /target:winexe /platform:x64 /optimize+ /langversion:5 "/out:$glassOutput" "/win32manifest:$glassRoot/native/app.manifest" "/win32icon:$glassRoot/native/icon.ico" "/resource:$glassRoot/assets/icon.png,icon.png" "/resource:$glassRoot/native/icon.ico,icon.ico" "/resource:$glassBuild/messages.json,messages.json" "/resource:$glassBuild/logo.txt,logo.txt" "/resource:$glassRoot/native/styles.xaml,styles.xaml" "/resource:$glassRoot/LICENSE,LICENSE" "/resource:$glassRoot/THIRD_PARTY_NOTICES.md,NOTICES" "/resource:$glassRoot/licenses/Pulse-Apache-2.0.txt,APACHE" $glassRefs $glassSources
 if($LASTEXITCODE -ne 0) { throw 'Native compilation failed.' }
-Copy-Item -LiteralPath $glassOutput -Destination (Join-Path $glassRoot 'dist/Codex-Glass-0.5.1-Portable-x64.exe')
+Copy-Item -LiteralPath $glassOutput -Destination (Join-Path $glassRoot 'dist/Codex-Glass-0.5.2-Portable-x64.exe')
 if($Test) {
     $glassRun = Start-Process -FilePath $glassOutput -ArgumentList '--self-test' -WindowStyle Hidden -Wait -PassThru
     if($glassRun.ExitCode -ne 0) { throw 'Native core tests failed. See CODEX_GLASS_QA_DIR/self-test-error.txt.' }
@@ -34,5 +34,5 @@ if($Package) {
     Copy-Item -LiteralPath $glassOutput -Destination $glassPackage
     Copy-Item -LiteralPath (Join-Path $glassRoot 'LICENSE'),(Join-Path $glassRoot 'THIRD_PARTY_NOTICES.md') -Destination $glassPackage
     Copy-Item -LiteralPath (Join-Path $glassRoot 'licenses/Pulse-Apache-2.0.txt') -Destination (Join-Path $glassPackage 'licenses')
-    Compress-Archive -Path (Join-Path $glassPackage '*') -DestinationPath (Join-Path $glassRoot 'dist/Codex-Glass-0.5.1-Portable-x64.zip') -Force
+    Compress-Archive -Path (Join-Path $glassPackage '*') -DestinationPath (Join-Path $glassRoot 'dist/Codex-Glass-0.5.2-Portable-x64.zip') -Force
 }
