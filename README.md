@@ -31,6 +31,14 @@ Windows 10 / 11 · x64 · C# / WPF
 | Stay out of the way | Floating ring, pinning, corner resizing and scrolling within a fixed window |
 | Make it yours | English / Simplified Chinese / Traditional Chinese menu, light / dark / system themes, custom accents |
 
+## 📊 Daily tokens and period totals
+
+Expand **Daily token usage**, then choose **7 days / 30 days**. Hover over a bar to see that day's count; the top-right number totals the reported days in the selected period.
+
+<table><tr><td align="center"><b>7 days · inspect a single day</b><br><img src="assets/guide-tokens-en-7.png" width="354" alt="Seven-day chart: selected day 31.88 M tokens, period total 78.74 M · Demo"></td><td align="center"><b>30 days · see the total</b><br><img src="assets/guide-tokens-en-30.png" width="354" alt="Thirty-day chart: selected day 31.88 M tokens, period total 133.27 M · Demo"></td></tr></table>
+
+English uses **K / M / B**; Chinese uses **万 / 萬** for daily values and **亿 / 億** for totals. Hover over the total for the exact number. Images use artificial demo data; missing days remain `—` and are not counted as zero.
+
 ## 🎨 Make it yours
 
 Pick a preset, or click the **square swatch** in Settings → Accent color to choose any color.
@@ -83,13 +91,24 @@ C# / WPF using the Windows-provided .NET Framework. No bundled Electron, Chromiu
 
 Reference measurement (v0.5.0, compact mode): **84.4 MiB private memory**, **119.9 MiB working set**, with no helper child after the query.
 
-## Data & privacy
+## Open source & privacy
 
-- Reads official client responses. No AI conversations created, no chat history scanned, no usage uploaded.
+**[MIT-licensed open source](LICENSE). The widget sends no account, usage or other personal data to the developer.** The current native app has no developer telemetry, analytics or data-collection endpoint.
+
+| Where data goes | What happens |
+| --- | --- |
+| Official Codex → your widget | Reads account identity and plan, quota/reset information, and daily token counts needed for display and account separation |
+| Your computer | Saves preferences, quota cache, reminder state and manually entered membership dates; account identifiers are hashed before saving |
+| Developer | Receives no automatic reports from the widget; no passwords, conversations or usage data are uploaded to the developer |
+
+The widget does not receive your password or scan conversations. Official Codex handles credentials and connects to OpenAI for sign-in and account queries; its own data handling is governed by OpenAI's policies. Daily token history stays in memory and is not written to the widget's cache.
+
 - Quota reset dates are not membership expiry dates. Membership dates are explicitly manual.
 - Daily reports may be delayed. Missing values remain `—`, distinct from zero. Pools stay separate.
 - Reset opens the official usage page; it does not consume a reset credit.
 - Default storage: `%APPDATA%\codex-usage-widget`. Local caches are not encrypted. Keep personal data directories out of public reports.
+
+See [Security & privacy](SECURITY.md) for implementation details.
 
 ## Build from source
 
