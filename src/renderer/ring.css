@@ -1,0 +1,36 @@
+.other-pools { margin-top: 16px; border-top: 1px solid var(--line); }
+.other-pools summary { cursor: pointer; padding: 12px 2px; font-size: 11px; color: var(--muted); }
+.other-pools summary span { float: right; border-radius: 5px; padding: 0 5px; background: var(--surface); }
+.other-pools > p { margin: 0 0 12px; color: var(--muted); font-size: 10px; line-height: 1.7; }
+.pool-detail > span { display: block; font-size: 11px; padding: 0 2px 7px; }
+.pool-detail + .pool-detail { margin-top: 12px; }
+.window-pin { display: grid; place-items: center; padding: 3px; color: var(--muted); opacity: .5; border-radius: 5px; }
+.window-pin svg { width: 13px; height: 13px; }
+.window-pin:hover, .window-pin.selected { opacity: 1; color: var(--blue); background: rgba(100,155,255,.15); }
+body.is-mini { padding: 8px; overflow: hidden; }
+.mini.ring-widget { display: block; width: 76px; height: 110px; padding: 0; background: none; border: 0; border-radius: 0; box-shadow: none; --ring: #31c893; }
+.ring-widget.warning { --ring: #ffb644; }
+.ring-widget.critical { --ring: #ff594f; }
+.ring-widget.unknown { --ring: #a5b0bf; }
+.ring-widget.is-stale { --ring: #9ea8b8; }
+.ring-button { position: relative; display: flex; flex-direction: column; align-items: center; width: 76px; height: 110px; padding: 0; border-radius: 36px; touch-action: none; cursor: pointer; color: #fff; text-shadow: 0 1px 4px #000, 0 0 10px rgba(0,0,0,.65); }
+.ring-button::before { position: absolute; content: ''; width: 58px; height: 58px; top: 7px; border-radius: 50%; background: #25364b; box-shadow: 0 2px 8px rgba(0,0,0,.16); }
+.quota-ring { position: relative; width: 72px; height: 72px; flex-shrink: 0; fill: none; filter: drop-shadow(0 1px 2px rgba(0,0,0,.18)); }
+.ring-track, .ring-fill { stroke-width: 5.5; }
+.ring-track { stroke: rgba(127,143,166,.28); }
+.ring-fill { stroke: var(--ring); stroke-linecap: round; transition: stroke-dasharray .35s, stroke .35s; }
+.elapsed-ring { stroke: rgba(255,255,255,.78); stroke-width: 1.4; stroke-linecap: round; }
+.ring-mark { position: absolute; top: 19px; width: 34px; height: 34px; display: grid; place-items: center; filter: drop-shadow(0 1px 2px rgba(0,0,0,.45)); }
+.ring-mark img { display: block; width: 34px; height: 34px; filter: brightness(0) invert(1); }
+.ring-value { display: block; font-size: 22px; font-weight: 650; line-height: 25px; letter-spacing: -.7px; margin-top: -1px; font-variant-numeric: tabular-nums; }
+.ring-value small { font-size: 16px; margin-left: 1px; }
+.ring-button:hover::before { background: #30445e; }
+.is-mini .ring-button:focus-visible { outline-offset: 0; }
+@media (prefers-reduced-motion: reduce) { .ring-fill { transition: none; } }
+
+.demo-ring { position:absolute; top:56px; font-size:6px; color:#fff; letter-spacing:.3px; }
+.ring-notice { position:absolute; top:51px; right:7px; width:17px; height:17px; background:#34445a; border-radius:50%; display:grid; place-items:center; }
+.ring-notice svg { width:12px; height:12px; }
+
+.ring-period { color:#fff; font-size:10px; line-height:14px; opacity:.9; }
+.ring-button img, .ring-button svg, .ring-mark { pointer-events:none; -webkit-user-drag:none; user-select:none; }

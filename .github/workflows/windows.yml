@@ -1,0 +1,27 @@
+name: Native Windows build
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and test native executable
+        shell: powershell
+        run: ./scripts/build-native.ps1 -Test
+      - name: Install packaging tool
+        run: choco install nsis --yes --no-progress
+      - name: Build installer
+        shell: powershell
+        run: ./scripts/build-native.ps1 -Package
+      - uses: actions/upload-artifact@v4
+        with:
+          name: codex-glass-native-windows
+          path: |
+            dist/Codex-Glass-0.5.0-*.exe
+            dist/Codex-Glass-0.5.0-Portable-x64.zip
+          if-no-files-found: error

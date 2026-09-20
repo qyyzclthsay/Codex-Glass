@@ -1,0 +1,31 @@
+.daily-usage { margin-top: 9px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.daily-toggle { width: 100%; display: flex; align-items: center; gap: 9px; padding: 14px 0; text-align: left; font-size: 12px; }
+.daily-toggle > svg { width: 16px; height: 16px; color: var(--blue); }
+.daily-chevron { display: flex; margin-left: auto; color: var(--muted); transition: transform .15s; }
+.daily-chevron svg { width: 13px; height: 13px; }
+.daily-chevron.open { transform: rotate(90deg); }
+.daily-body { padding-bottom: 12px; }
+.daily-controls { display: flex; justify-content: space-between; align-items: center; margin: 0 0 12px; }
+.daily-controls > button { font-size: 10px; }
+.range-switch { display: flex; padding: 3px; border: 1px solid var(--line); background: var(--surface); border-radius: 8px; }
+.range-switch button { border-radius: 5px; padding: 4px 9px; font-size: 10px; color: var(--muted); }
+.range-switch button[aria-pressed="true"] { background: color-mix(in srgb,var(--accent) 13%,transparent); color: var(--blue); }
+.daily-total { display: flex; justify-content: space-between; align-items: center; padding-bottom: 10px; }
+.daily-total span { color: var(--muted); font-size: 10px; }
+.daily-total strong { font-size: 17px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.daily-chart { position: relative; padding-top: 25px; }
+.daily-bars { display: flex; align-items: stretch; gap: 3px; height: 90px; border-bottom: 1px solid var(--line); }
+.daily-bar { position: relative; display: flex; align-items: flex-end; justify-content: center; flex: 1; min-width: 0; padding: 0; border-radius: 2px 2px 0 0; }
+.daily-bar > span { display: block; width: 100%; height: var(--bar-height); min-height: 2px; background: var(--accent); border-radius: 2px 2px 0 0; }
+.daily-bar:hover > span,.daily-bar:focus-visible > span { filter: brightness(1.18); }
+.daily-bar.zero > span { height: 2px; background: transparent; border-top: 2px solid var(--accent); }
+.daily-bar.missing > span { height: 2px; background: transparent; border-top: 1px dashed var(--muted); }
+.daily-axis { display: flex; justify-content: space-between; margin-top: 6px; font-size: 10px; color: var(--muted); }
+.daily-tooltip { position: absolute; top: 0; right: 0; font-size: 10px; color: var(--ink); opacity: 0; pointer-events: none; font-variant-numeric: tabular-nums; }
+.daily-tooltip.visible { opacity: 1; }
+.daily-note,.daily-message { color: var(--muted); font-size: 10px; line-height: 1.7; margin: 10px 0 0; }
+.daily-message { padding: 12px 0; }
+.reset-link { display: inline-flex; align-items: center; justify-content: center; gap: 3px; font-size: 10px; color: var(--blue); padding: 6px; border: 1px solid var(--line); border-radius: 7px; flex-shrink: 0; }
+.reset-link svg { width: 13px; height: 13px; }
+.reset-link:hover { background: color-mix(in srgb,var(--accent) 10%,transparent); }
+.reset-row strong { white-space: nowrap; }

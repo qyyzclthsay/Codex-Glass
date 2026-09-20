@@ -1,0 +1,58 @@
+{
+  "name": "codex-usage-widget",
+  "productName": "Codex Glass",
+  "version": "0.3.1",
+  "description": "A bilingual Windows desktop companion for Codex allowance monitoring",
+  "author": "Codex Glass contributors",
+  "license": "MIT",
+  "main": "src/main.cjs",
+  "scripts": {
+    "start": "electron .",
+    "demo": "electron . --demo",
+    "test": "node --test tests/*.test.cjs",
+    "probe": "node scripts/probe.cjs",
+    "qa": "electron . --smoke-test",
+    "build": "node scripts/icon.cjs && node -e \"require('electron')\" && electron-builder --win nsis portable",
+    "build:dir": "node scripts/icon.cjs && node -e \"require('electron')\" && electron-builder --win --dir"
+  },
+  "devDependencies": {
+    "electron": "44.4.3",
+    "electron-builder": "26.15.3"
+  },
+  "build": {
+    "appId": "io.github.codexglass.widget",
+    "asar": true,
+    "electronDist": "node_modules/electron/dist",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "src/**/*",
+      "assets/icon.png",
+      "package.json",
+      "LICENSE",
+      "THIRD_PARTY_NOTICES.md",
+      "assets/openai.svg",
+      "licenses/**/*"
+    ],
+    "win": {
+      "icon": "build/icon.ico",
+      "target": [
+        "nsis",
+        "portable"
+      ],
+      "signExecutable": false
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "perMachine": false,
+      "createDesktopShortcut": true,
+      "artifactName": "Codex-Glass-${version}-Setup-${arch}.${ext}"
+    },
+    "portable": {
+      "artifactName": "Codex-Glass-${version}-Portable-${arch}.${ext}"
+    }
+  }
+}
