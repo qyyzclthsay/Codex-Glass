@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.5.1 — 2026-09-20
+
+- Made the inactive ring track translucent while retaining the original center color.
+- Hide compact-mode percentage and period labels until the pointer enters the circle.
+  Labels slide/fade in over 180 ms and retract over 140 ms; text styling is unchanged.
+- Respect Windows' animation preference. Finished and interrupted animations release
+  their clocks; caption drawings are cached instead of rebuilding text every frame.
+
 ## 0.5.0 — 2026-09-20
 
 - Added Traditional Chinese throughout the interface, preferences and notifications.

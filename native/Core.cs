@@ -121,7 +121,7 @@ sealed class Rpc : IDisposable {
             try {if(!p.Start())throw new Exception("startFailed");}catch{Close(p,"startFailed");throw new Exception("startFailed");}
             p.StandardInput.AutoFlush=true;
             BeginRead(p);
-            await Request("initialize",J.Obj("clientInfo",J.Obj("name","codex_glass_native","title","Codex Glass","version","0.5.0")));
+            await Request("initialize",J.Obj("clientInfo",J.Obj("name","codex_glass_native","title","Codex Glass","version","0.5.1")));
             Write(J.Obj("method","initialized","params",new D()));ready=true;
         }finally{startGate.Release();}
     }

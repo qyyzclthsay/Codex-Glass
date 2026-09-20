@@ -6,8 +6,8 @@ using System.Windows;
 using System.Windows.Threading;
 [assembly: AssemblyTitle("Codex Glass")]
 [assembly: AssemblyProduct("Codex Glass")]
-[assembly: AssemblyVersion("0.5.0.0")]
-[assembly: AssemblyFileVersion("0.5.0.0")]
+[assembly: AssemblyVersion("0.5.1.0")]
+[assembly: AssemblyFileVersion("0.5.1.0")]
 namespace CodexGlass {
 static class Program {
     public static string[] Arguments;public static string QaDirectory;

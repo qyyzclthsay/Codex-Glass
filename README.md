@@ -10,7 +10,7 @@ Windows 10 / 11 · x64 · C# / WPF
 
 [简体中文](README.md) · [繁體中文](README.zh-TW.md) · [English](README.en.md)
 
-![Windows](https://img.shields.io/badge/Windows-10%20%2F%2011-0078D4?style=flat-square) ![Version](https://img.shields.io/badge/version-0.5.0-4C8DF3?style=flat-square) ![MIT](https://img.shields.io/badge/license-MIT-16A085?style=flat-square)
+![Windows](https://img.shields.io/badge/Windows-10%20%2F%2011-0078D4?style=flat-square) ![Version](https://img.shields.io/badge/version-0.5.1-4C8DF3?style=flat-square) ![MIT](https://img.shields.io/badge/license-MIT-16A085?style=flat-square)
 
 [下载最新版](https://github.com/qyyzclthsay/Codex-Glass/releases/latest) · [反馈问题](https://github.com/qyyzclthsay/Codex-Glass/issues) · [验证记录](docs/VALIDATION.md)
 
@@ -18,7 +18,7 @@ Windows 10 / 11 · x64 · C# / WPF
 
 <table><tr><td align="center"><b>用量概览</b><br><img src="assets/preview-zh.png" width="300" alt="用量概览 · Demo"></td><td align="center"><b>深色主题</b><br><img src="assets/preview-dark.png" width="300" alt="深色主题 · Demo"></td></tr></table>
 
-<p align="center"><img src="assets/preview-ring.png" width="92" alt="Mini ring · Demo"><br><sub>点一下展开，拖动即可移动。截图均为演示数据。</sub></p>
+<p align="center"><img src="assets/preview-ring.png" width="92" alt="Idle ring · Demo"> <img src="assets/preview-ring-hover.png" width="92" alt="Hovered ring · Demo"><br><sub>平时只显示圆环，悬停显示数字；点击展开，拖动移动。截图均为演示数据。</sub></p>
 
 ## 小组件，随时可见
 
@@ -35,14 +35,14 @@ Windows 10 / 11 · x64 · C# / WPF
 
 ## 下载与开始使用
 
-**[下载 Windows 安装包](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/Codex-Glass-0.5.0-Setup-x64.exe)**
+**[下载 Windows 安装包](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/Codex-Glass-0.5.1-Setup-x64.exe)**
 
 | 文件 | 用途 |
 | --- | --- |
-| [Setup-x64.exe](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/Codex-Glass-0.5.0-Setup-x64.exe) | 推荐安装版，约 124 KiB |
-| [Portable-x64.exe](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/Codex-Glass-0.5.0-Portable-x64.exe) | 单文件便携版，约 180 KiB |
-| [Portable-x64.zip](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/Codex-Glass-0.5.0-Portable-x64.zip) | 便携版与许可证 |
-| [SHA256SUMS](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/SHA256SUMS-0.5.0.txt) | 下载文件校验值 |
+| [Setup-x64.exe](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/Codex-Glass-0.5.1-Setup-x64.exe) | 推荐安装版，约 126 KiB |
+| [Portable-x64.exe](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/Codex-Glass-0.5.1-Portable-x64.exe) | 单文件便携版，约 187 KiB |
+| [Portable-x64.zip](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/Codex-Glass-0.5.1-Portable-x64.zip) | 便携版与许可证 |
+| [SHA256SUMS](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/SHA256SUMS-0.5.1.txt) | 下载文件校验值 |
 
 1. 在 Windows 10 / 11 x64 安装官方 Codex 桌面应用或 CLI，登录你的 ChatGPT 账户。
 2. 安装或运行 Codex Glass，通过本机 Codex 读取当前账户的额度。
@@ -56,7 +56,7 @@ C# / WPF 原生实现，使用 Windows 自带 .NET Framework，不捆绑 Electro
 
 **下载大小不等于运行内存。** 最新实测数据与条件见 [验证记录](docs/VALIDATION.md)。私有内存与工作集是不同口径，占用随系统、字体和操作变化。查询结束后释放 Codex 辅助进程；浏览器登录等待期间保留连接。
 
-本机正常迷你模式实测：私有内存 **84.4 MiB**，工作集 **119.9 MiB**，查询后无辅助子进程。
+v0.5.0 本机基准实测：私有内存 **84.4 MiB**，工作集 **119.9 MiB**，查询后无辅助子进程。
 
 ## 数据与隐私
 

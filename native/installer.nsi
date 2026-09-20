@@ -3,12 +3,12 @@ Unicode true
 !include "FileFunc.nsh"
 Var ExtractOnly
 Name "Codex Glass"
-OutFile "..\dist\Codex-Glass-0.5.0-Setup-x64.exe"
+OutFile "..\dist\Codex-Glass-0.5.1-Setup-x64.exe"
 InstallDir "$LOCALAPPDATA\Programs\Codex Glass Native"
 InstallDirRegKey HKCU "Software\CodexGlassNative" "InstallDir"
 RequestExecutionLevel user
 SetCompressor /SOLID lzma
-BrandingText "Codex Glass 0.5.0 · Native Windows"
+BrandingText "Codex Glass 0.5.1 · Native Windows"
 !define MUI_ICON "icon.ico"
 !define MUI_UNICON "icon.ico"
 !insertmacro MUI_PAGE_WELCOME
@@ -46,7 +46,7 @@ Section "Codex Glass"
   CreateShortcut "$SMPROGRAMS\Codex Glass\Uninstall.lnk" "$INSTDIR\Uninstall.exe"
   WriteRegStr HKCU "Software\CodexGlassNative" "InstallDir" "$INSTDIR"
   WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\CodexGlassNative" "DisplayName" "Codex Glass"
-  WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\CodexGlassNative" "DisplayVersion" "0.5.0"
+  WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\CodexGlassNative" "DisplayVersion" "0.5.1"
   WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\CodexGlassNative" "UninstallString" '"$INSTDIR\Uninstall.exe"'
   WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\CodexGlassNative" "DisplayIcon" "$INSTDIR\Codex Glass.exe"
   WriteRegDWORD HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\CodexGlassNative" "NoModify" 1

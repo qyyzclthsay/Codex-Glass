@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using D=System.Collections.Generic.Dictionary<string,object>;
 namespace CodexGlass {
 static class Paint {
@@ -22,15 +23,37 @@ static class Paint {
 }
 sealed class RingView : FrameworkElement {
     public D Quota;public string Period;public Brush Accent,OuterAccent;public bool Stale,Demo,Outer;public Geometry Logo;
-    public RingView(){Width=92;Height=126;Cursor=Cursors.Hand;Focusable=true;}
+    static readonly Brush CenterBrush=Paint.Brush("#243950"),TrackBrush=Paint.Brush("#5257687A"),HitBrush=Paint.Brush("#01000000");
+    static readonly DependencyProperty RevealProperty=DependencyProperty.Register("RevealProgress",typeof(double),typeof(RingView),new FrameworkPropertyMetadata(0d,FrameworkPropertyMetadataOptions.AffectsRender));
+    bool revealed;int animationVersion;string captionKey;DrawingGroup caption;
+    public double RevealProgress {get{return (double)GetValue(RevealProperty);}}
+    public RingView(){Width=92;Height=126;Cursor=Cursors.Hand;Focusable=true;
+        MouseEnter+=(s,e)=>Reveal(true);MouseLeave+=(s,e)=>Reveal(false);
+        GotKeyboardFocus+=(s,e)=>Reveal(true);LostKeyboardFocus+=(s,e)=>{if(!IsMouseOver)Reveal(false);};
+        Loaded+=(s,e)=>{if(IsMouseOver)Reveal(true,false);};
+        Unloaded+=(s,e)=>{animationVersion++;BeginAnimation(RevealProperty,null);};
+    }
+    public void Reveal(bool show,bool animate=true){if(revealed==show&&animate)return;revealed=show;int version=++animationVersion;double target=show?1:0;
+        if(!animate||!SystemParameters.ClientAreaAnimation){BeginAnimation(RevealProperty,null);SetValue(RevealProperty,target);return;}
+        var motion=new DoubleAnimation(RevealProgress,target,TimeSpan.FromMilliseconds(show?180:140)){EasingFunction=new CubicEase{EasingMode=EasingMode.EaseOut},FillBehavior=FillBehavior.Stop};
+        motion.Completed+=(s,e)=>{if(version==animationVersion){BeginAnimation(RevealProperty,null);SetValue(RevealProperty,target);}};
+        BeginAnimation(RevealProperty,motion,HandoffBehavior.SnapshotAndReplace);SetValue(RevealProperty,target);
+    }
+    protected override HitTestResult HitTestCore(PointHitTestParameters hit){return (hit.HitPoint-new Point(46,42)).Length<=38?new PointHitTestResult(this,hit.HitPoint):null;}
+    DrawingGroup Caption(double left){string value=left<0?"—":Math.Floor(left)+"%",period=(Stale?"◷ ":"")+(Period??"");string key=value+"|"+period;
+        if(caption==null||captionKey!=key){captionKey=key;caption=new DrawingGroup();using(var text=caption.Open()){
+            var number=Paint.Text(value,23,Brushes.White,true);Paint.DesktopText(text,number,new Point((92-number.Width)/2,80),2);
+            var label=Paint.Text(period,10,Brushes.White);Paint.DesktopText(text,label,new Point((92-label.Width)/2,107),1.6);
+        }caption.Freeze();}return caption;
+    }
     protected override void OnRender(DrawingContext dc){
         base.OnRender(dc);double left=Quota==null?-1:J.N(Quota,"remaining");Brush color=Stale||left<0?Paint.Brush("#98A5B6"):left<=10?Paint.Brush("#EF5B58"):left<=25?Paint.Brush("#F5A33C"):Accent;
-        var center=new Point(46,42);dc.DrawEllipse(Paint.Brush("#243950"),null,center,30,30);dc.DrawEllipse(null,new Pen(Paint.Brush("#57687A"),5),center,30,30);
+        // Keep the gap between rings hoverable, without an opaque backing behind the track.
+        var center=new Point(46,42);dc.DrawEllipse(HitBrush,null,center,38,38);dc.DrawEllipse(CenterBrush,null,center,27.5,27.5);dc.DrawEllipse(null,new Pen(TrackBrush,5),center,30,30);
         Paint.Arc(dc,center,30,Math.Max(0,left)/100,new Pen(color,5){StartLineCap=PenLineCap.Round,EndLineCap=PenLineCap.Round});
         if(Outer&&Quota!=null&&J.N(Quota,"resetsAt")>0&&J.N(Quota,"minutes")>0)Paint.Arc(dc,center,36,J.Clamp(1-(J.N(Quota,"resetsAt")-J.Now)/(J.N(Quota,"minutes")*60000),0,1),new Pen(OuterAccent??Accent,2){StartLineCap=PenLineCap.Round,EndLineCap=PenLineCap.Round});
         if(Logo!=null){dc.PushTransform(new TranslateTransform(29,25));dc.PushTransform(new ScaleTransform(34/24.0,34/24.0));dc.DrawGeometry(Brushes.White,null,Logo);dc.Pop();dc.Pop();}
-        var value=Paint.Text(left<0?"—":Math.Floor(left)+"%",23,Brushes.White,true);Paint.DesktopText(dc,value,new Point((92-value.Width)/2,80),2);
-        var period=Paint.Text((Stale?"◷ ":"")+(Period??""),10,Brushes.White);Paint.DesktopText(dc,period,new Point((92-period.Width)/2,107),1.6);
+        double reveal=J.Clamp(RevealProgress,0,1);if(reveal>0){dc.PushClip(new RectangleGeometry(new Rect(0,79,92,41)));dc.PushOpacity(reveal);dc.PushTransform(new TranslateTransform(0,-8*(1-reveal)));dc.DrawDrawing(Caption(left));dc.Pop();dc.Pop();dc.Pop();}
         if(Demo){var demo=Paint.Text("DEMO",7,Paint.Brush("#D0D9E5"));dc.DrawText(demo,new Point((92-demo.Width)/2,120));}
     }
 }

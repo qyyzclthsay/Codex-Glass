@@ -1,5 +1,17 @@
 # Validation record — native update 2026-09-20
 
+## v0.5.1 hover labels and translucent track
+
+- Kept the center color and text appearance; inactive track alpha is 82/255, with no
+  opaque disk beneath the track. Mini window size stays 92 × 126 DIP during hover.
+- Percentage/period labels are hidden at rest, slide/fade in on circle entry and retract
+  on exit. Animations use cached caption drawings and respect reduced-motion settings.
+- 39 core checks and the UI suite passed. Added rendering/input checks for hidden
+  text pixels, translucent track alpha, label-area hit testing, routed pointer enter/leave,
+  rapid reversal, completed-clock cleanup and removal of old ring animations on refresh.
+- Visually checked idle, hover and white-background renders. Pointer tests use WPF
+  routed events; physical mouse automation remains unavailable on this machine.
+
 ## v0.5.0 release
 
 - 39 core/protocol assertions passed, including three-language catalog coverage,

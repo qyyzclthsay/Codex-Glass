@@ -10,7 +10,7 @@ Windows 10 / 11 · x64 · C# / WPF
 
 [简体中文](README.md) · [繁體中文](README.zh-TW.md) · [English](README.en.md)
 
-![Windows](https://img.shields.io/badge/Windows-10%20%2F%2011-0078D4?style=flat-square) ![Version](https://img.shields.io/badge/version-0.5.0-4C8DF3?style=flat-square) ![MIT](https://img.shields.io/badge/license-MIT-16A085?style=flat-square)
+![Windows](https://img.shields.io/badge/Windows-10%20%2F%2011-0078D4?style=flat-square) ![Version](https://img.shields.io/badge/version-0.5.1-4C8DF3?style=flat-square) ![MIT](https://img.shields.io/badge/license-MIT-16A085?style=flat-square)
 
 [Download](https://github.com/qyyzclthsay/Codex-Glass/releases/latest) · [Report an issue](https://github.com/qyyzclthsay/Codex-Glass/issues) · [Validation](docs/VALIDATION.md)
 
@@ -18,7 +18,7 @@ Windows 10 / 11 · x64 · C# / WPF
 
 <table><tr><td align="center"><b>Usage overview</b><br><img src="assets/preview-en.png" width="300" alt="Usage overview · Demo"></td><td align="center"><b>Dark theme</b><br><img src="assets/preview-dark.png" width="300" alt="Dark theme · Demo"></td></tr></table>
 
-<p align="center"><img src="assets/preview-ring.png" width="92" alt="Mini ring · Demo"><br><sub>Click to expand. Drag to move. All screenshots use demo data.</sub></p>
+<p align="center"><img src="assets/preview-ring.png" width="92" alt="Idle ring · Demo"> <img src="assets/preview-ring-hover.png" width="92" alt="Hovered ring · Demo"><br><sub>Hover for numbers. Click to expand. Drag to move. All screenshots use demo data.</sub></p>
 
 ## A small companion for your desktop
 
@@ -35,14 +35,14 @@ The elapsed-time arc follows your accent. Outlined percentage and period labels 
 
 ## Download & get started
 
-**[Download the Windows installer](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/Codex-Glass-0.5.0-Setup-x64.exe)**
+**[Download the Windows installer](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/Codex-Glass-0.5.1-Setup-x64.exe)**
 
 | File | Purpose |
 | --- | --- |
-| [Setup-x64.exe](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/Codex-Glass-0.5.0-Setup-x64.exe) | Recommended installer, about 124 KiB |
-| [Portable-x64.exe](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/Codex-Glass-0.5.0-Portable-x64.exe) | Standalone executable, about 180 KiB |
-| [Portable-x64.zip](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/Codex-Glass-0.5.0-Portable-x64.zip) | Portable executable and licenses |
-| [SHA256SUMS](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/SHA256SUMS-0.5.0.txt) | Download checksums |
+| [Setup-x64.exe](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/Codex-Glass-0.5.1-Setup-x64.exe) | Recommended installer, about 126 KiB |
+| [Portable-x64.exe](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/Codex-Glass-0.5.1-Portable-x64.exe) | Standalone executable, about 187 KiB |
+| [Portable-x64.zip](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/Codex-Glass-0.5.1-Portable-x64.zip) | Portable executable and licenses |
+| [SHA256SUMS](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/SHA256SUMS-0.5.1.txt) | Download checksums |
 
 1. Install the official Codex desktop app or CLI on Windows 10 / 11 x64 and sign in with ChatGPT.
 2. Install or run Codex Glass. It reads the current account through local Codex.
@@ -56,7 +56,7 @@ C# / WPF using the Windows-provided .NET Framework. No bundled Electron, Chromiu
 
 **Download size is not RAM usage.** See the [validation record](docs/VALIDATION.md) for current measurements and conditions. Private memory and working set are different metrics; usage varies with system, fonts and activity. The Codex helper exits after queries and stays connected only while browser sign-in is pending.
 
-Normal compact launch on this machine: **84.4 MiB private memory**, **119.9 MiB working set**, with no helper child after the query.
+Reference measurement (v0.5.0, compact mode): **84.4 MiB private memory**, **119.9 MiB working set**, with no helper child after the query.
 
 ## Data & privacy
 
