@@ -8,7 +8,7 @@
 
 Windows 10 / 11 · x64 · C# / WPF
 
-[简体中文](README.md) · [繁體中文](README.zh-TW.md) · [English](README.en.md)
+[English](README.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md)
 
 ![Windows](https://img.shields.io/badge/Windows-10%20%2F%2011-0078D4?style=flat-square) ![Version](https://img.shields.io/badge/version-0.5.1-4C8DF3?style=flat-square) ![MIT](https://img.shields.io/badge/license-MIT-16A085?style=flat-square)
 
@@ -29,30 +29,23 @@ Windows 10 / 11 · x64 · C# / WPF
 | 每日用量 | 7 / 30 天 Token 長條圖，滑鼠停留或鍵盤查看數值 |
 | 重設與會員 | 可用重設次數；會員日期手動填寫、依帳戶儲存 |
 | 不遮擋工作 | 迷你懸浮圓環、置頂、四角縮放、固定視窗內捲動 |
-| 隨你設定 | 簡體 / 繁體 / English 選單，淺色 / 深色 / 系統主題，自訂色彩 |
+| 隨你設定 | English / 簡體 / 繁體 選單，淺色 / 深色 / 系統主題，自訂色彩 |
 
-## 自訂色彩
+## 🎨 選一個你的色彩
 
-開啟 **設定 → 介面色彩**，讓小元件搭配你的桌面：
+在 **設定 → 介面色彩** 中選擇預設色，或點擊右側的**方形色塊**，自由挑選色彩。
 
-- **快速選擇**：點擊下方六個預設色圓點。
-- **自由選色**：點擊右側方形色塊，開啟 Windows 色彩選擇器，選擇自己的色彩。
-- **恢復預設**：一鍵回到預設配色。
+<table><tr><td align="center"><b>選擇色彩</b><br><img src="assets/guide-color-zh-TW.png" width="354" alt="實際色彩設定：六種預設、自訂色塊與還原預設"></td><td align="center"><b>看看桌面效果</b><br><img src="assets/guide-color-rings-zh-TW.png" width="354" alt="藍色、紫色、綠色的小元件效果 · 示範資料"></td></tr></table>
 
-自訂色彩套用於按鈕、進度條及正常狀態的額度圓環；週期時間外環也跟隨介面色彩。低額度的額度圓環仍保留橙色 / 紅色提醒。
+按鈕、進度條與圓環跟隨你的配色；低額度仍保留橙紅色提醒。點擊**還原預設**即可還原。
 
-## 看懂兩道圓環
+## ⏱ 額度與時間，一起看
 
-在 **設定 → 圓環顯示 → 週期時間外環** 中開啟細外環（預設關閉），同時查看額度與時間：
+在 **設定 → 圓環顯示** 中開啟**週期時間外環**。粗環看**還剩多少額度**，細外環看**週期已過多久**。
 
-| 圓環 | 代表什麼 | 如何變化 |
-| --- | --- | --- |
-| 較粗的額度環 | 目前所選週期的**剩餘額度** | 用量增加，剩餘額度減少 |
-| 較細的時間外環 | 同一週期的**已過時間比例** | 隨時間推進增長，即使沒有使用 Codex 也會變化 |
+<table><tr><td align="center"><b>開啟時間外環</b><br><img src="assets/guide-ring-settings-zh-TW.png" width="354" alt="為五小時週期開啟週期時間外環"></td><td align="center"><b>關閉 / 開啟</b><br><img src="assets/guide-ring-zh-TW.png" width="354" alt="相同的 75% 剩餘額度，左邊關閉時間外環，右邊開啟 · 示範資料"></td></tr></table>
 
-例如，5 小時週期已過去 2 小時，時間外環約走過 **40%**；額度環此時仍可能顯示 **75% 剩餘**。兩者分別代表時間與額度，不需要相加等於 100%。
-
-外環依官方回傳的週期長度及重設時間計算，跟隨目前選取的週期；缺少這些資料時不顯示。百分比與週期文字在滑鼠停留時展開，帶深色描邊，兼顧淺色桌布。
+圖中範例：**額度還剩 75%**，**5 小時週期已過去 40%**。外環跟隨介面色彩，可隨時關閉；滑鼠停留在圓環上即可查看數字。
 
 ## 下載與開始使用
 
@@ -71,13 +64,16 @@ Windows 10 / 11 · x64 · C# / WPF
 
 程式尚未數位簽章。已驗證 Windows 10 22H2；Windows 11 與混合 DPI 尚未完整驗證。
 
-### 登入與自動讀取
+<details>
+<summary>登入與自動讀取</summary>
 
 啟動時自動檢查本機 Codex 的目前帳戶並讀取額度；**只有點擊登入按鈕才會啟動瀏覽器登入**。「重新讀取」僅重新檢查帳戶與額度。
 
 不必每次先開啟 Codex 視窗，也不必讓 Codex 桌面應用程式持續執行。元件會按需啟動官方 `codex app-server`。若桌面應用程式與元件使用不同的登入儲存位置或執行環境，桌面端已登入也可能仍需在元件中連線。僅在瀏覽器登入 ChatGPT 不代表本機 Codex 已登入。
 
 沒有本機登入狀態時，也可以直接從元件按鈕完成首次登入，但仍須已安裝官方 Codex。登入成功後自動讀取額度；此操作可能更新本機 Codex CLI 的目前帳戶。元件不接收你的密碼，OAuth 登入與憑證管理由官方 Codex 處理。API Key 登入不適用於此處的 ChatGPT 訂閱額度監控。介面說明見 [OpenAI 官方文件](https://developers.openai.com/zh-Hant/docs/app-server)。
+
+</details>
 
 ## 體積與記憶體
 
