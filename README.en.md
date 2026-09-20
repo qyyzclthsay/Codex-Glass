@@ -31,7 +31,28 @@ Windows 10 / 11 · x64 · C# / WPF
 | Stay out of the way | Floating ring, pinning, corner resizing and scrolling within a fixed window |
 | Make it yours | Simplified Chinese / Traditional Chinese / English menu, light / dark / system themes, custom accents |
 
-The elapsed-time arc follows your accent. Outlined percentage and period labels stay legible on light wallpapers. Low allowance retains amber/red warning colors.
+## Choose your colors
+
+Open **Settings → Accent color** to match the widget to your desktop:
+
+- **Pick a preset:** select one of the six color circles.
+- **Choose a custom color:** click the square swatch on the right to open the Windows color picker.
+- **Restore defaults:** return to the original palette with one click.
+
+Your custom accent applies to buttons, progress bars and the allowance ring in its normal state. The elapsed-time outer ring follows the interface accent too. Low allowance still uses amber / red warning colors on the allowance ring.
+
+## Two rings, two readings
+
+Enable **Settings → Status ring → Elapsed time arc** (off by default) to see allowance and time together:
+
+| Ring | What it shows | How it changes |
+| --- | --- | --- |
+| Thick allowance ring | **Remaining allowance** in the selected window | Falls as allowance is used |
+| Thin outer ring | **Elapsed time** as a share of the same window | Advances with time, even when you are not using Codex |
+
+For example, two hours into a five-hour window, the outer ring is about **40%** complete while the allowance ring might still show **75% remaining**. They measure different things and do not need to add up to 100%.
+
+The outer ring uses the service-reported window duration and reset time, following the currently selected window. It is hidden when those values are unavailable. Hover to reveal the percentage and period labels; dark outlines keep them readable on light wallpapers.
 
 ## Download & get started
 
@@ -44,11 +65,19 @@ The elapsed-time arc follows your accent. Outlined percentage and period labels 
 | [Portable-x64.zip](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/Codex-Glass-0.5.1-Portable-x64.zip) | Portable executable and licenses |
 | [SHA256SUMS](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/SHA256SUMS-0.5.1.txt) | Download checksums |
 
-1. Install the official Codex desktop app or CLI on Windows 10 / 11 x64 and sign in with ChatGPT.
-2. Install or run Codex Glass. It reads the current account through local Codex.
+1. Install the official Codex desktop app or CLI on Windows 10 / 11 x64 so the official Codex executable is available locally.
+2. Install or run Codex Glass. It reads an available ChatGPT sign-in automatically. Otherwise, click “Sign in with ChatGPT” and complete sign-in on the official page.
 3. Pick a language from the top menu. The overlapping-windows icon opens compact mode. Drag the title bar or compact ring to move.
 
-If sign-in is needed, the official page opens in your system browser. This may change the local CLI account. Builds are unsigned. Validated on Windows 10 22H2; Windows 11 and mixed-DPI configurations are not fully tested.
+Builds are unsigned. Validated on Windows 10 22H2; Windows 11 and mixed-DPI configurations are not fully tested.
+
+### Sign-in and automatic reading
+
+On startup, the widget checks the current local Codex account and reads its allowance. **Browser sign-in starts only when you click the sign-in button.** “Read again” only retries the account and allowance check.
+
+You do not need to open a Codex window first or keep the desktop app running. The widget starts the official `codex app-server` when needed. If the desktop app and widget use different credential stores or environments, you may still need to connect in the widget. Signing in to ChatGPT in a browser alone does not sign in to local Codex.
+
+You can complete your first sign-in from the widget, provided official Codex is installed. After a successful sign-in, allowance is read automatically; this may update the current local Codex CLI account. The widget does not receive your password. Official Codex manages OAuth and credentials. API-key sign-in is not used for this ChatGPT subscription allowance monitor. See the [official OpenAI documentation](https://developers.openai.com/codex/app-server) for the account interface.
 
 ## Size & memory
 
