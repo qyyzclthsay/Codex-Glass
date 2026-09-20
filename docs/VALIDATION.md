@@ -26,6 +26,8 @@
   preliminary, before the final concurrency fix, and are not the release baseline.
 - All public screenshots are generated from demo fixtures, with the Demo label visible.
   Real account caches, settings, credentials and private test outputs are excluded.
+- Installer extraction passed; the extracted executable SHA-256 matches the tested
+  portable executable. Installer: 126,728 bytes; portable executable: 184,320 bytes.
 - Known limits: unsigned installer; Windows 11, mixed-DPI monitor changes, fresh OAuth
   login and physical mouse gesture automation have not been fully verified here.
 
