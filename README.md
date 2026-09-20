@@ -1,45 +1,56 @@
 <div align="center">
 
-<img src="assets/icon.png" width="72" alt="Codex Glass">
+<img src="assets/icon.png" width="56" alt="Codex Glass">
 
 # Codex Glass
 
-**Your Codex allowance. Always in view.**
-
-Monitoring only reads existing usage statistics. It makes no AI model calls and consumes no additional AI tokens.
-
-Windows 10 / 11 · x64 · C# / WPF
+**Your Codex allowance, right on your Windows desktop.**
 
 [English](README.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md)
 
-![Windows](https://img.shields.io/badge/Windows-10%20%2F%2011-0078D4?style=flat-square) ![Version](https://img.shields.io/badge/version-0.5.2-4C8DF3?style=flat-square) ![MIT](https://img.shields.io/badge/license-MIT-16A085?style=flat-square)
+**[⬇ Download for Windows](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/Codex-Glass-0.5.2-Setup-x64.exe)** · [Portable & all downloads](https://github.com/qyyzclthsay/Codex-Glass/releases/latest)
 
-[Download](https://github.com/qyyzclthsay/Codex-Glass/releases/latest) · [Report an issue](https://github.com/qyyzclthsay/Codex-Glass/issues) · [Validation](docs/VALIDATION.md)
+**Free & open source · No additional AI tokens · No personal data sent to the developer**
+
+<sub>Windows 10 / 11 · x64 · Requires locally installed official Codex and a ChatGPT account</sub>
 
 </div>
 
-<table><tr><td align="center"><b>Usage overview</b><br><img src="assets/preview-en.png" width="300" alt="Usage overview · Demo"></td><td align="center"><b>Dark theme</b><br><img src="assets/preview-dark.png" width="300" alt="Dark theme · Demo"></td></tr></table>
+<table><tr><td align="center" width="22%"><b>Stay in view</b><br><br><img src="assets/preview-ring.png" width="92" alt="Stay in view · Demo"></td><td align="center" width="22%"><b>Hover for numbers</b><br><br><img src="assets/preview-ring-hover.png" width="92" alt="Hover for numbers · Demo"></td><td align="center" width="56%"><b>Click to expand</b><br><img src="assets/preview-en.png" width="240" alt="Click to expand · Demo"></td></tr></table>
 
-<p align="center"><img src="assets/preview-ring.png" width="92" alt="Idle ring · Demo"> <img src="assets/preview-ring-hover.png" width="92" alt="Hovered ring · Demo"><br><sub>Hover for numbers. Click to expand. Drag to move. All screenshots use demo data.</sub></p>
+<p align="center"><sub>Drag the ring to move it. Screenshots use demo data.</sub></p>
 
-## A small companion for your desktop
+<p align="center">If Codex Glass helps you, a ⭐ Star is appreciated.</p>
 
-| At a glance | What you get |
+## Get started
+
+1. Install the official Codex desktop app or CLI. This widget monitors ChatGPT subscription allowance; third-party API keys are not supported.
+2. Run Codex Glass. It reads an available local sign-in automatically; otherwise, choose **Sign in with ChatGPT**.
+3. Use the overlapping-windows icon for compact mode. Hover to see numbers, click to expand, or drag to move.
+
+**Download notice:** v0.5.2 is unsigned, so Edge or Windows may show a download or unknown-publisher warning. [Signing status](docs/CODE_SIGNING.md).
+
+<details>
+<summary>Portable versions, file sizes & checksums</summary>
+
+| File | Purpose |
 | --- | --- |
-| Remaining allowance | Service-reported 5-hour / weekly windows, plan and reset countdowns |
-| Additional models | Separate model groups; independent pools never added to primary quotas |
-| Daily usage | Flat 7 / 30-day token charts with hover and keyboard values |
-| Resets & membership | Available resets; manual membership dates saved per account |
-| Stay out of the way | Floating ring, pinning, corner resizing and scrolling within a fixed window |
-| Make it yours | English / Simplified Chinese / Traditional Chinese menu, light / dark / system themes, custom accents |
+| [Setup-x64.exe](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/Codex-Glass-0.5.2-Setup-x64.exe) | Recommended installer, about 128 KiB |
+| [Portable-x64.exe](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/Codex-Glass-0.5.2-Portable-x64.exe) | Standalone executable, about 192 KiB |
+| [Portable-x64.zip](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/Codex-Glass-0.5.2-Portable-x64.zip) | Portable executable and licenses |
+| [SHA256SUMS](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/SHA256SUMS-0.5.2.txt) | Download checksums |
+
+Validated on Windows 10 22H2; Windows 11 and mixed-DPI configurations are not fully tested.
+
+</details>
 
 ## 📊 Daily tokens and period totals
 
-Expand **Daily token usage**, then choose **7 days / 30 days**. Hover over a bar to see that day's count; the top-right number totals the reported days in the selected period.
+Choose **7 / 30 days**. Hover over a bar for one day; the top-right number totals the reported days in that period.
 
 <table><tr><td align="center"><b>7 days · inspect a single day</b><br><img src="assets/guide-tokens-en-7.png" width="354" alt="Seven-day chart: selected day 31.88 M tokens, period total 78.74 M · Demo"></td><td align="center"><b>30 days · see the total</b><br><img src="assets/guide-tokens-en-30.png" width="354" alt="Thirty-day chart: selected day 31.88 M tokens, period total 133.27 M · Demo"></td></tr></table>
 
-English uses **K / M / B**; Chinese uses **万 / 萬** for daily values and **亿 / 億** for totals. Hover over the total for the exact number. Images use artificial demo data; missing days remain `—` and are not counted as zero.
+English uses **K / M / B**. Hover over the total for the exact count. Missing records stay `—`, not zero.
 
 ## 🎨 Make it yours
 
@@ -57,24 +68,9 @@ Turn on **Elapsed time arc** in Settings → Status ring. The thick ring shows *
 
 In this demo, **75% allowance remains** and **40% of the five-hour window has elapsed**. The outer ring follows your accent and is optional. Hover over the widget to reveal the numbers.
 
-## Download & get started
+## Questions & details
 
-**[Download the Windows installer](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/Codex-Glass-0.5.2-Setup-x64.exe)**
-
-| File | Purpose |
-| --- | --- |
-| [Setup-x64.exe](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/Codex-Glass-0.5.2-Setup-x64.exe) | Recommended installer, about 128 KiB |
-| [Portable-x64.exe](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/Codex-Glass-0.5.2-Portable-x64.exe) | Standalone executable, about 192 KiB |
-| [Portable-x64.zip](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/Codex-Glass-0.5.2-Portable-x64.zip) | Portable executable and licenses |
-| [SHA256SUMS](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/SHA256SUMS-0.5.2.txt) | Download checksums |
-
-1. Install the official Codex desktop app or CLI on Windows 10 / 11 x64 so the official Codex executable is available locally.
-2. Install or run Codex Glass. It reads an available ChatGPT sign-in automatically. Otherwise, click “Sign in with ChatGPT” and complete sign-in on the official page.
-3. Pick a language from the top menu. The overlapping-windows icon opens compact mode. Drag the title bar or compact ring to move.
-
-Current downloads are **unsigned**: Edge may show “not commonly downloaded,” and Windows may show “unknown publisher.” Free open-source signing application materials are being prepared; no provider approval or signed release is claimed. See the [code signing policy](docs/CODE_SIGNING.md).
-
-Validated on Windows 10 22H2; Windows 11 and mixed-DPI configurations are not fully tested.
+The widget queries existing statistics without calling an AI model. It sends no account, usage or other personal data to the developer. Official Codex connects to OpenAI to sign in and fetch usage. [Privacy details](SECURITY.md).
 
 <details>
 <summary>Sign-in and automatic reading</summary>
@@ -87,7 +83,24 @@ You can complete your first sign-in from the widget, provided official Codex is 
 
 </details>
 
-## Size & memory
+<details>
+<summary>More features & dark theme</summary>
+
+| At a glance | What you get |
+| --- | --- |
+| Remaining allowance | Service-reported 5-hour / weekly windows, plan and reset countdowns |
+| Additional models | Separate model groups; independent pools never added to primary quotas |
+| Daily usage | Flat 7 / 30-day token charts with hover and keyboard values |
+| Resets & membership | Available resets; manual membership dates saved per account |
+| Stay out of the way | Floating ring, pinning, corner resizing and scrolling within a fixed window |
+| Make it yours | English / Simplified Chinese / Traditional Chinese menu, light / dark / system themes, custom accents |
+
+<p align="center"><img src="assets/preview-dark.png" width="260" alt="Dark theme · Demo"></p>
+
+</details>
+
+<details>
+<summary>How much memory does it use?</summary>
 
 C# / WPF using the Windows-provided .NET Framework. No bundled Electron, Chromium, Node.js or WebView2. Downloads exclude the system framework and the separately installed official Codex runtime.
 
@@ -95,7 +108,10 @@ C# / WPF using the Windows-provided .NET Framework. No bundled Electron, Chromiu
 
 Reference measurement (v0.5.0, compact mode): **84.4 MiB private memory**, **119.9 MiB working set**, with no helper child after the query.
 
-## Open source & privacy
+</details>
+
+<details>
+<summary>What data does it read or save?</summary>
 
 **[MIT-licensed open source](LICENSE). The widget sends no account, usage or other personal data to the developer.** The current native app has no developer telemetry, analytics or data-collection endpoint.
 
@@ -114,7 +130,10 @@ The widget does not receive your password or scan conversations. Official Codex 
 
 See [Security & privacy](SECURITY.md) for implementation details.
 
-## Build from source
+</details>
+
+<details>
+<summary>Build from source</summary>
 
 Use Windows PowerShell and the system .NET Framework compiler. No Node.js or extra SDK required:
 
@@ -133,7 +152,11 @@ Install NSIS for packaging, then run `scripts/build-native.ps1 -Package`. Output
 
 GitHub Actions builds and tests; maintainers publish Releases. The current implementation is in `native/`. Historical Electron code in `src/` and `tests/` is retained for reference and excluded from the current binary.
 
-## Open source
+</details>
+
+## Feedback & contributing
+
+Found a bug or have an idea? [Open an issue](https://github.com/qyyzclthsay/Codex-Glass/issues). Include your Windows version, widget version and steps to reproduce; remove personal information from screenshots.
 
 MIT · Independent community project, not an official OpenAI product. Service logos identify the monitored service.
 

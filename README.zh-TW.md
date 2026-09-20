@@ -1,45 +1,56 @@
 <div align="center">
 
-<img src="assets/icon.png" width="72" alt="Codex Glass">
+<img src="assets/icon.png" width="56" alt="Codex Glass">
 
 # Codex Glass
 
-**讓 Codex 剩餘額度，隨時看得見。**
-
-監控僅查詢既有的用量統計，不呼叫 AI 模型，不額外消耗 Token。
-
-Windows 10 / 11 · x64 · C# / WPF
+**讓 Codex 剩餘額度，隨時顯示在 Windows 桌面上。**
 
 [English](README.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md)
 
-![Windows](https://img.shields.io/badge/Windows-10%20%2F%2011-0078D4?style=flat-square) ![Version](https://img.shields.io/badge/version-0.5.2-4C8DF3?style=flat-square) ![MIT](https://img.shields.io/badge/license-MIT-16A085?style=flat-square)
+**[⬇ 下載 Windows 安裝程式](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/Codex-Glass-0.5.2-Setup-x64.exe)** · [可攜版與全部下載](https://github.com/qyyzclthsay/Codex-Glass/releases/latest)
 
-[下載最新版](https://github.com/qyyzclthsay/Codex-Glass/releases/latest) · [回報問題](https://github.com/qyyzclthsay/Codex-Glass/issues) · [驗證紀錄](docs/VALIDATION.md)
+**免費開源 · 監控不額外消耗 Token · 不向開發者上傳個人資訊**
+
+<sub>Windows 10 / 11 · x64 · 須在本機安裝官方 Codex，並使用 ChatGPT 帳戶</sub>
 
 </div>
 
-<table><tr><td align="center"><b>用量總覽</b><br><img src="assets/preview-zh-TW.png" width="300" alt="用量總覽 · Demo"></td><td align="center"><b>深色主題</b><br><img src="assets/preview-dark.png" width="300" alt="深色主題 · Demo"></td></tr></table>
+<table><tr><td align="center" width="22%"><b>桌面常駐</b><br><br><img src="assets/preview-ring.png" width="92" alt="桌面常駐 · Demo"></td><td align="center" width="22%"><b>停留查看數字</b><br><br><img src="assets/preview-ring-hover.png" width="92" alt="停留查看數字 · Demo"></td><td align="center" width="56%"><b>點擊展開用量</b><br><img src="assets/preview-zh-TW.png" width="240" alt="點擊展開用量 · Demo"></td></tr></table>
 
-<p align="center"><img src="assets/preview-ring.png" width="92" alt="Idle ring · Demo"> <img src="assets/preview-ring-hover.png" width="92" alt="Hovered ring · Demo"><br><sub>平時只顯示圓環，滑鼠停留時顯示數字；點擊展開，拖曳移動。截圖均為示範資料。</sub></p>
+<p align="center"><sub>拖曳圓環即可移動位置。截圖均使用示範資料。</sub></p>
 
-## 小元件，隨時可見
+<p align="center">如果這個小工具對你有幫助，歡迎點個 ⭐ Star。</p>
 
-| 你關心的 | Codex Glass |
+## 開始使用
+
+1. 安裝官方 Codex 桌面應用程式或 CLI。本工具讀取 ChatGPT 訂閱額度，暫不支援第三方平台的 API Key。
+2. 執行 Codex Glass，自動讀取本機可用的登入狀態；尚未登入時，點擊**使用 ChatGPT 登入**。
+3. 點擊雙視窗圖示進入迷你模式。滑鼠停留看數字，點擊展開，拖曳即可移動。
+
+**下載提示：**v0.5.2 尚未數位簽章，Edge 或 Windows 可能提示不常下載或未知的發行者。[查看簽章狀態](docs/CODE_SIGNING.md)。
+
+<details>
+<summary>可攜版、檔案大小與校驗值</summary>
+
+| 檔案 | 用途 |
 | --- | --- |
-| 還剩多少 | 官方回傳的 5 小時 / 每週額度、方案及重設倒數 |
-| 其他模型 | 依模型分組，獨立額度池不與主額度相加 |
-| 每日用量 | 7 / 30 天 Token 長條圖，滑鼠停留或鍵盤查看數值 |
-| 重設與會員 | 可用重設次數；會員日期手動填寫、依帳戶儲存 |
-| 不遮擋工作 | 迷你懸浮圓環、置頂、四角縮放、固定視窗內捲動 |
-| 隨你設定 | English / 簡體 / 繁體 選單，淺色 / 深色 / 系統主題，自訂色彩 |
+| [Setup-x64.exe](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/Codex-Glass-0.5.2-Setup-x64.exe) | 推薦安裝版，約 128 KiB |
+| [Portable-x64.exe](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/Codex-Glass-0.5.2-Portable-x64.exe) | 單檔可攜版，約 192 KiB |
+| [Portable-x64.zip](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/Codex-Glass-0.5.2-Portable-x64.zip) | 可攜版與授權文件 |
+| [SHA256SUMS](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/SHA256SUMS-0.5.2.txt) | 下載檔案校驗值 |
+
+已驗證 Windows 10 22H2；Windows 11 與混合 DPI 尚未完整驗證。
+
+</details>
 
 ## 📊 單日用了多少，總共用了多少
 
-展開**每日 Token 用量**，切換 **7 天 / 30 天**。將滑鼠移到長條上查看當天用量，右上角顯示所選時間範圍內已回傳紀錄的合計。
+切換 **7 天 / 30 天**，將滑鼠移到長條上看當天用量，右上角看所選時段內已回傳紀錄的合計。
 
 <table><tr><td align="center"><b>7 天 · 查看單日</b><br><img src="assets/guide-tokens-zh-TW-7.png" width="354" alt="七天圖表：選取單日 3188.46 萬 Token，合計 0.79 億 · 示範資料"></td><td align="center"><b>30 天 · 查看合計</b><br><img src="assets/guide-tokens-zh-TW-30.png" width="354" alt="三十天圖表：選取單日 3188.46 萬 Token，合計 1.33 億 · 示範資料"></td></tr></table>
 
-單日用**萬**、總計用**億**，滑鼠停留在總計上可查看完整數字。簡體顯示 **万 / 亿**，英文顯示 **K / M / B**。圖片均為虛構示範資料；缺少紀錄以 `—` 顯示，不會當成零。
+單日用**萬**，總計用**億**；滑鼠停留在總計上可看完整數字。缺少紀錄顯示 `—`，不會當成零。
 
 ## 🎨 選一個你的色彩
 
@@ -57,24 +68,9 @@ Windows 10 / 11 · x64 · C# / WPF
 
 圖中範例：**額度還剩 75%**，**5 小時週期已過去 40%**。外環跟隨介面色彩，可隨時關閉；滑鼠停留在圓環上即可查看數字。
 
-## 下載與開始使用
+## 常見問題與詳細說明
 
-**[下載 Windows 安裝程式](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/Codex-Glass-0.5.2-Setup-x64.exe)**
-
-| 檔案 | 用途 |
-| --- | --- |
-| [Setup-x64.exe](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/Codex-Glass-0.5.2-Setup-x64.exe) | 推薦安裝版，約 128 KiB |
-| [Portable-x64.exe](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/Codex-Glass-0.5.2-Portable-x64.exe) | 單檔可攜版，約 192 KiB |
-| [Portable-x64.zip](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/Codex-Glass-0.5.2-Portable-x64.zip) | 可攜版與授權文件 |
-| [SHA256SUMS](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/SHA256SUMS-0.5.2.txt) | 下載檔案校驗值 |
-
-1. 在 Windows 10 / 11 x64 安裝官方 Codex 桌面應用程式或 CLI，讓本機能找到官方 Codex 執行檔。
-2. 安裝或執行 Codex Glass。已有可讀取的 ChatGPT 登入狀態時，會自動顯示額度；否則點擊「使用 ChatGPT 登入」，在官方頁面完成登入。
-3. 頂部語言按鈕可選擇語言，雙視窗圖示切換迷你模式；拖曳標題列或圓環移動。
-
-目前下載**尚未數位簽章**，Edge 可能提示不常下載，Windows 可能顯示未知的發行者。免費開源簽章申請資料正在準備中，目前尚未核准，也未發布已簽章版本。詳見[程式碼簽章說明](docs/CODE_SIGNING.md)。
-
-已驗證 Windows 10 22H2；Windows 11 與混合 DPI 尚未完整驗證。
+監控僅查詢既有統計，不呼叫 AI 模型，不額外消耗 Token。元件不會向開發者傳送帳戶、用量或其他個人資訊；官方 Codex 會連線至 OpenAI 完成登入與用量查詢。[隱私說明](SECURITY.md)。
 
 <details>
 <summary>登入與自動讀取</summary>
@@ -87,7 +83,24 @@ Windows 10 / 11 · x64 · C# / WPF
 
 </details>
 
-## 體積與記憶體
+<details>
+<summary>更多功能與深色主題</summary>
+
+| 你關心的 | Codex Glass |
+| --- | --- |
+| 還剩多少 | 官方回傳的 5 小時 / 每週額度、方案及重設倒數 |
+| 其他模型 | 依模型分組，獨立額度池不與主額度相加 |
+| 每日用量 | 7 / 30 天 Token 長條圖，滑鼠停留或鍵盤查看數值 |
+| 重設與會員 | 可用重設次數；會員日期手動填寫、依帳戶儲存 |
+| 不遮擋工作 | 迷你懸浮圓環、置頂、四角縮放、固定視窗內捲動 |
+| 隨你設定 | English / 簡體 / 繁體 選單，淺色 / 深色 / 系統主題，自訂色彩 |
+
+<p align="center"><img src="assets/preview-dark.png" width="260" alt="Dark theme · Demo"></p>
+
+</details>
+
+<details>
+<summary>執行時占多少記憶體？</summary>
 
 C# / WPF 原生實作，使用 Windows 提供的 .NET Framework，不附帶 Electron、Chromium、Node.js 或 WebView2。安裝程式不包含系統框架與另行安裝的官方 Codex。
 
@@ -95,7 +108,10 @@ C# / WPF 原生實作，使用 Windows 提供的 .NET Framework，不附帶 Elec
 
 v0.5.0 本機基準實測：私有記憶體 **84.4 MiB**，工作集 **119.9 MiB**，查詢後無輔助子程序。
 
-## 開源與隱私
+</details>
+
+<details>
+<summary>會讀取和儲存哪些資料？</summary>
 
 **本軟體採用 [MIT 開源授權](LICENSE)，不會向開發者傳送使用者的帳戶、用量或其他個人資訊。** 目前原生版本不含開發者遙測、分析追蹤或資料收集介面。
 
@@ -114,7 +130,10 @@ v0.5.0 本機基準實測：私有記憶體 **84.4 MiB**，工作集 **119.9 MiB
 
 實作細節見[安全與隱私說明](SECURITY.md)。
 
-## 從原始碼建置
+</details>
+
+<details>
+<summary>從原始碼建置</summary>
 
 使用 Windows PowerShell 與系統 .NET Framework 編譯器，無需 Node.js 或額外 SDK：
 
@@ -133,7 +152,11 @@ powershell -NoProfile -ExecutionPolicy Bypass -File scripts/qa-native.ps1
 
 GitHub Actions 自動建置與測試；Release 由維護者發布。`native/` 是目前實作；`src/`、`tests/` 保留早期 Electron 參考原始碼，不編入目前程式。
 
-## 開源
+</details>
+
+## 回饋與參與
+
+遇到問題或有新想法？歡迎[提交 Issue](https://github.com/qyyzclthsay/Codex-Glass/issues)，附上 Windows 版本、軟體版本與重現步驟；截圖請隱去個人資訊。
 
 MIT · 社群獨立專案，非 OpenAI 官方產品。服務 Logo 僅用於識別受監控的服務。
 
