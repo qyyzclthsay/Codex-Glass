@@ -72,7 +72,9 @@ Windows 10 / 11 · x64 · C# / WPF
 2. 安装或运行 Codex Glass。已有可读取的 ChatGPT 登录状态时，会自动显示额度；否则点击“使用 ChatGPT 登录”，在官方页面完成登录。
 3. 顶部语言按钮可选择语言，双窗口图标进入迷你模式；拖标题栏或圆环移动。
 
-构建尚未数字签名。已验证 Windows 10 22H2；Windows 11 与混合 DPI 尚未完整验证。
+当前下载**尚未数字签名**，Edge 可能提示“通常不会下载”，Windows 可能显示“发布者未知”。免费开源签名申请材料正在准备中，目前尚未获批，也未发布签名版本。详见[代码签名说明](docs/CODE_SIGNING.md)。
+
+已验证 Windows 10 22H2；Windows 11 与混合 DPI 尚未完整验证。
 
 <details>
 <summary>登录与自动读取</summary>

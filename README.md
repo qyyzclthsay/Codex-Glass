@@ -72,7 +72,9 @@ In this demo, **75% allowance remains** and **40% of the five-hour window has el
 2. Install or run Codex Glass. It reads an available ChatGPT sign-in automatically. Otherwise, click “Sign in with ChatGPT” and complete sign-in on the official page.
 3. Pick a language from the top menu. The overlapping-windows icon opens compact mode. Drag the title bar or compact ring to move.
 
-Builds are unsigned. Validated on Windows 10 22H2; Windows 11 and mixed-DPI configurations are not fully tested.
+Current downloads are **unsigned**: Edge may show “not commonly downloaded,” and Windows may show “unknown publisher.” Free open-source signing application materials are being prepared; no provider approval or signed release is claimed. See the [code signing policy](docs/CODE_SIGNING.md).
+
+Validated on Windows 10 22H2; Windows 11 and mixed-DPI configurations are not fully tested.
 
 <details>
 <summary>Sign-in and automatic reading</summary>

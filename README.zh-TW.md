@@ -72,7 +72,9 @@ Windows 10 / 11 · x64 · C# / WPF
 2. 安裝或執行 Codex Glass。已有可讀取的 ChatGPT 登入狀態時，會自動顯示額度；否則點擊「使用 ChatGPT 登入」，在官方頁面完成登入。
 3. 頂部語言按鈕可選擇語言，雙視窗圖示切換迷你模式；拖曳標題列或圓環移動。
 
-程式尚未數位簽章。已驗證 Windows 10 22H2；Windows 11 與混合 DPI 尚未完整驗證。
+目前下載**尚未數位簽章**，Edge 可能提示不常下載，Windows 可能顯示未知的發行者。免費開源簽章申請資料正在準備中，目前尚未核准，也未發布已簽章版本。詳見[程式碼簽章說明](docs/CODE_SIGNING.md)。
+
+已驗證 Windows 10 22H2；Windows 11 與混合 DPI 尚未完整驗證。
 
 <details>
 <summary>登入與自動讀取</summary>
