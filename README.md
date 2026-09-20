@@ -6,6 +6,8 @@
 
 **Your Codex allowance. Always in view.**
 
+Monitoring only reads existing usage statistics. It makes no AI model calls and consumes no additional AI tokens.
+
 Windows 10 / 11 · x64 · C# / WPF
 
 [English](README.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md)

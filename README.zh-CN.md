@@ -6,6 +6,8 @@
 
 **把 Codex 剩余额度，放在看得见的地方。**
 
+监控只查询已有的用量统计，不调用 AI 模型，不额外消耗 Token。
+
 Windows 10 / 11 · x64 · C# / WPF
 
 [English](README.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md)
