@@ -20,8 +20,6 @@
 
 <p align="center"><sub>拖曳圓環即可移動位置。截圖均使用示範資料。</sub></p>
 
-<p align="center">如果這個小工具對你有幫助，歡迎點個 ⭐ Star。</p>
-
 ## 開始使用
 
 1. 安裝官方 Codex 桌面應用程式或 CLI。本工具讀取 ChatGPT 訂閱額度，暫不支援第三方平台的 API Key。
@@ -163,3 +161,14 @@ MIT · 社群獨立專案，非 OpenAI 官方產品。服務 Logo 僅用於識�
 [參與貢獻](CONTRIBUTING.md) · [安全與隱私](SECURITY.md) · [技術架構](docs/ARCHITECTURE.md) · [第三方聲明](THIRD_PARTY_NOTICES.md) · [更新紀錄](CHANGELOG.md)
 
 感謝 [Pulse](https://github.com/qunqin24/Pulse) 的功能邏輯參考；素材來源與授權保留於第三方聲明。
+
+---
+
+<div align="center">
+
+<h2>⭐ 支持 Codex Glass</h2>
+
+<p><strong><a href="https://github.com/qyyzclthsay/Codex-Glass">如果這個小工具對你有幫助，歡迎在 GitHub 點個 Star。</a></strong></p>
+<p>你的支持，能讓更多 Codex 使用者發現這個專案。</p>
+
+</div>

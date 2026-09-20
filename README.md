@@ -20,8 +20,6 @@
 
 <p align="center"><sub>Drag the ring to move it. Screenshots use demo data.</sub></p>
 
-<p align="center">If Codex Glass helps you, a ⭐ Star is appreciated.</p>
-
 ## Get started
 
 1. Install the official Codex desktop app or CLI. This widget monitors ChatGPT subscription allowance; third-party API keys are not supported.
@@ -163,3 +161,14 @@ MIT · Independent community project, not an official OpenAI product. Service lo
 [Contributing](CONTRIBUTING.md) · [Security](SECURITY.md) · [Architecture](docs/ARCHITECTURE.md) · [Third-party notices](THIRD_PARTY_NOTICES.md) · [Changelog](CHANGELOG.md)
 
 Thanks to [Pulse](https://github.com/qunqin24/Pulse) for functional inspiration. Asset origins and licenses are preserved in the third-party notices.
+
+---
+
+<div align="center">
+
+<h2>⭐ Support Codex Glass</h2>
+
+<p><strong><a href="https://github.com/qyyzclthsay/Codex-Glass">If Codex Glass makes your day a little easier, give it a Star on GitHub.</a></strong></p>
+<p>Your support helps more Codex users discover this project.</p>
+
+</div>
