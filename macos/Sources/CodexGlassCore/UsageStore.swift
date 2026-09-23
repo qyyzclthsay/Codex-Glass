@@ -121,8 +121,12 @@ public final class UsageStore: ObservableObject {
             guard accountID != nil else { throw GlassError.signInRequired }
             if demo { daily = UsageNormalizer.demoDaily(); return }
             let before = try await account()
+            guard !closed, !suspended, !loginPending, epoch == lifecycleEpoch else { return }
             guard UsageNormalizer.identity(before) == fp, version == generation else { throw GlassError.accountChanged }
-            if let daily, Date().timeIntervalSince(daily.observedAt) < 60 { return }
+            if let daily {
+                let age = Date().timeIntervalSince(daily.observedAt)
+                if age >= 0 && age < 60 { return }
+            }
             let result = try await rpc.call("account/usage/read", params: .object([:]))
             let after = try await account()
             guard !closed, !suspended, !loginPending, epoch == lifecycleEpoch else { return }
@@ -169,6 +173,7 @@ public final class UsageStore: ObservableObject {
             }
             return url
         } catch {
+            guard !closed, !suspended, epoch == lifecycleEpoch else { return nil }
             loginID = nil; loginPending = false; earlyLoginCompletion = nil
             self.error = "loginFailed"; rpc.stop(); return nil
         }

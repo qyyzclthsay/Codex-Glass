@@ -63,9 +63,9 @@ final class RPCClient: RPCTransport {
 
     private func start() async throws {
         guard process == nil else { throw GlassError.connectionLost }
-        let executable = try executable ?? CodexLocator.locate()
+        let executableURL = try self.executable ?? CodexLocator.locate()
         let child = Process()
-        child.executableURL = executable; child.arguments = arguments
+        child.executableURL = executableURL; child.arguments = arguments
         let stdin = Pipe(), stdout = Pipe(), stderr = Pipe()
         child.standardInput = stdin; child.standardOutput = stdout; child.standardError = stderr
         // Finder-launched apps often have no package-manager PATH. This also lets a

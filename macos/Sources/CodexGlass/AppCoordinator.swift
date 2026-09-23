@@ -81,7 +81,8 @@ final class AppCoordinator: NSObject, ObservableObject, NSApplicationDelegate, N
             if store.settings.compact { showCompact() } else { showMain() }
         }
         clockTimer = Timer.scheduledTimer(withTimeInterval: 15, repeats: true) { [weak self] _ in
-            Task { @MainActor in self?.clockTick() }
+            guard let self else { return }
+            Task { @MainActor in self.clockTick() }
         }
         clockTimer?.tolerance = 2
         refresh()
@@ -98,9 +99,10 @@ final class AppCoordinator: NSObject, ObservableObject, NSApplicationDelegate, N
         mainWindow.contentMinSize = NSSize(width: 320, height: 360)
         mainWindow.contentMaxSize = NSSize(width: 900, height: 1400)
         mainWindow.delegate = self
-        mainWindow.setFrameAutosaveName(demo ? "CodexGlassDemoMain" : "CodexGlassMain")
+        let mainFrameName = demo ? "CodexGlassDemoMain" : "CodexGlassMain"
+        mainWindow.setFrameAutosaveName(mainFrameName)
         mainWindow.contentView = NSHostingView(rootView: MainView(controller: self, store: store))
-        mainWindow.center()
+        if smoke || !mainWindow.setFrameUsingName(mainFrameName) { mainWindow.center() }
         miniWindow = MiniPanel(contentRect: NSRect(x: 0, y: 0, width: 92, height: 126), styleMask: [.borderless, .nonactivatingPanel], backing: .buffered, defer: false)
         miniWindow.isOpaque = false
         miniWindow.backgroundColor = .clear
@@ -109,10 +111,11 @@ final class AppCoordinator: NSObject, ObservableObject, NSApplicationDelegate, N
         miniWindow.hidesOnDeactivate = false
         miniWindow.isMovableByWindowBackground = false
         miniWindow.collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary]
-        miniWindow.setFrameAutosaveName(demo ? "CodexGlassDemoMini" : "CodexGlassMini")
+        let miniFrameName = demo ? "CodexGlassDemoMini" : "CodexGlassMini"
+        miniWindow.setFrameAutosaveName(miniFrameName)
         compactView = CompactView(controller: self)
         miniWindow.contentView = compactView
-        if let screen = NSScreen.main?.visibleFrame {
+        if (smoke || !miniWindow.setFrameUsingName(miniFrameName)), let screen = NSScreen.main?.visibleFrame {
             miniWindow.setFrameOrigin(NSPoint(x: screen.maxX - 130, y: screen.maxY - 180))
         }
     }
@@ -231,7 +234,8 @@ final class AppCoordinator: NSObject, ObservableObject, NSApplicationDelegate, N
         let base = visible ? store.settings.refreshSeconds : max(600, store.settings.refreshSeconds)
         let interval = min(1800, Double(base) * pow(2, Double(failures)))
         pollTimer = Timer.scheduledTimer(withTimeInterval: max(1, interval - Date().timeIntervalSince(lastRefresh)), repeats: false) { [weak self] _ in
-            Task { @MainActor in self?.refresh() }
+            guard let self else { return }
+            Task { @MainActor in self.refresh() }
         }
         pollTimer?.tolerance = 5
     }
@@ -252,14 +256,15 @@ final class AppCoordinator: NSObject, ObservableObject, NSApplicationDelegate, N
         pollTimer?.invalidate()
         pollTask?.cancel()
         pollTask = nil
-        Task { await store.suspend() }
+        store.suspend()
     }
 
     @objc private func didWake() {
         sleeping = false
         now = Date()
         failures = 0
-        Task { await store.resume(); refresh() }
+        store.resume()
+        refresh()
     }
 
     @objc private func screenChanged() { keepOnScreen(mainWindow); keepOnScreen(miniWindow) }
@@ -328,9 +333,9 @@ final class AppCoordinator: NSObject, ObservableObject, NSApplicationDelegate, N
 
     private func notify(key: String, body: String) {
         // Only hashed account IDs and event identifiers are retained, never account credentials.
-        let saved = Set(UserDefaults.standard.stringArray(forKey: "deliveredAlerts") ?? [])
-        guard !saved.contains(key), notificationKeys.insert(key).inserted else { return }
-        var ledger = Array(saved.union(notificationKeys))
+        var ledger = UserDefaults.standard.stringArray(forKey: "deliveredAlerts") ?? []
+        guard !ledger.contains(key), notificationKeys.insert(key).inserted else { return }
+        ledger.append(key)
         if ledger.count > 200 { ledger = Array(ledger.suffix(200)) }
         UserDefaults.standard.set(ledger, forKey: "deliveredAlerts")
         let content = UNMutableNotificationContent()
@@ -345,8 +350,8 @@ final class AppCoordinator: NSObject, ObservableObject, NSApplicationDelegate, N
         pollTimer?.invalidate()
         clockTimer?.invalidate()
         pollTask?.cancel()
-        Task { await store.shutdown(); NSApp.reply(toApplicationShouldTerminate: true) }
-        return .terminateLater
+        store.shutdown()
+        return .terminateNow
     }
 
     private func runSmokeTest() async {
@@ -388,13 +393,13 @@ final class AppCoordinator: NSObject, ObservableObject, NSApplicationDelegate, N
                   miniWindow.contentView?.bounds.size == NSSize(width: 92, height: 126), !miniWindow.isOpaque,
                   t("title") != "title", AppResources.bundle.url(forResource: "icon", withExtension: "png") != nil else { throw SmokeError.failed("Window or bundled resource assertion failed") }
             try "{\"success\":true,\"demoOnly\":true,\"screenshots\":7,\"languages\":3,\"resizable\":true,\"transparentMini\":true}".write(to: directory.appendingPathComponent("ui-result.json"), atomically: true, encoding: .utf8)
-            await store.shutdown()
+            store.shutdown()
             NSApp.stop(nil)
             exit(0)
         } catch {
             if let smokeDirectory { try? "{\"success\":false}".write(to: smokeDirectory.appendingPathComponent("ui-result.json"), atomically: true, encoding: .utf8) }
             fputs("UI smoke failed: \(error)\n", stderr)
-            await store.shutdown()
+            store.shutdown()
             exit(1)
         }
     }

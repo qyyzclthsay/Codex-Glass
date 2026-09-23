@@ -55,7 +55,7 @@ struct MainView: View {
             .help(t("language"))
             IconButton(symbol: store.settings.pinned ? "pin.fill" : "pin", label: t(store.settings.pinned ? "unpin" : "pin"), active: store.settings.pinned) { store.settings.pinned.toggle() }
             IconButton(symbol: "gearshape", label: t("settings"), active: controller.showingSettings) { controller.showingSettings.toggle() }
-            IconButton(symbol: "rectangle.inset.filled.and.person.filled", label: t("compact")) { controller.showCompact() }
+            IconButton(symbol: "pip.enter", label: t("compact")) { controller.showCompact() }
         }
         .padding(.leading, 76)
         .padding(.trailing, 10)

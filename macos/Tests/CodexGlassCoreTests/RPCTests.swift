@@ -16,7 +16,7 @@ final class RPCTests: XCTestCase {
         while IFS= read -r line; do
           case "$line" in
             *'"method":"initialize"'*) printf '%s\\n' '{"id":1,"result":{}}' ;;
-            *'"method":"account/read"'*)
+            *'"method":"account/read"'*|*'"method":"account\\/read"'*)
               printf '%s\\n' '{"method":"fixture/notice","params":{"ok":true}}'
               printf '%s\\n' '{"id":2,"result":{"account":{"type":"chatgpt","id":"fixture"}}}' ;;
           esac
@@ -36,7 +36,7 @@ final class RPCTests: XCTestCase {
         while IFS= read -r line; do
           case "$line" in
             *'"method":"initialize"'*) printf '%s\\n' '{"id":1,"result":{}}' ;;
-            *'"method":"account/read"'*) exit 0 ;;
+            *'"method":"account/read"'*|*'"method":"account\\/read"'*) exit 0 ;;
           esac
         done
         """)
@@ -69,5 +69,23 @@ final class RPCTests: XCTestCase {
         do { _ = try await rpc.call("turn/start"); XCTFail("Model request must be rejected") }
         catch { XCTAssertEqual(error as? GlassError, .invalidReply) }
         rpc.stop()
+    }
+
+    @MainActor func testStderrIsDrainedAndServerErrorsAreSanitized() async throws {
+        let file = try script("""
+        while IFS= read -r line; do
+          case "$line" in
+            *'"method":"initialize"'*)
+              /usr/bin/head -c 262144 /dev/zero >&2
+              printf '%s\\n' '{"id":1,"result":{}}' ;;
+            *'"method":"account/read"'*|*'"method":"account\\/read"'*)
+              printf '%s\\n' '{"id":2,"error":{"code":401,"message":"authentication failed for fixture-private-detail"}}' ;;
+          esac
+        done
+        """)
+        let rpc = RPCClient(executable: URL(fileURLWithPath: "/bin/sh"), arguments: [file.path], requestTimeout: 2)
+        defer { rpc.stop() }
+        do { _ = try await rpc.call("account/read"); XCTFail("Expected authentication failure") }
+        catch { XCTAssertEqual(error as? GlassError, .signInRequired) }
     }
 }

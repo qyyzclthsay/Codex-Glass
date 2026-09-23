@@ -81,7 +81,9 @@ final class UsageMathTests: XCTestCase {
         XCTAssertEqual(cached?.windows.map(\.id), ["live"])
         XCTAssertNil(cached?.resets.count)
         XCTAssertNil(UsageMath.cached(snapshot, identity: "account-a", now: now.addingTimeInterval(90000)))
-        XCTAssertNil(UsageMath.cached(snapshot, identity: "account-a", now: now.addingTimeInterval(-120)))
+        // A one-minute clock skew is tolerated; anything further in the future is rejected.
+        XCTAssertNotNil(UsageMath.cached(snapshot, identity: "account-a", now: now.addingTimeInterval(-120)))
+        XCTAssertNil(UsageMath.cached(snapshot, identity: "account-a", now: now.addingTimeInterval(-121)))
     }
 
     func testSettingsRecoverMissingFieldsAndRejectUnsafeValues() throws {
