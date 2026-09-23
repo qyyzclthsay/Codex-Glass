@@ -3,13 +3,16 @@
   "productName": "Codex Glass",
   "version": "0.5.1",
   "private": true,
-  "description": "A tiny native Windows companion for Codex allowance monitoring",
+  "description": "A native desktop companion for Codex allowance monitoring",
   "license": "MIT",
   "scripts": {
     "build": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/build-native.ps1 -Package",
     "build:portable": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/build-native.ps1",
     "test": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/build-native.ps1 -Test",
     "test:legacy": "node --test tests/*.test.cjs",
-    "qa": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/qa-native.ps1"
+    "qa": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/qa-native.ps1",
+    "build:macos": "bash scripts/build-macos.sh",
+    "test:macos": "swift test --package-path macos",
+    "qa:macos": "bash scripts/qa-macos.sh"
   }
 }

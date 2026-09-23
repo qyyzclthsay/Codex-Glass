@@ -4,15 +4,21 @@
 
 # Codex Glass
 
-**讓 Codex 剩餘額度，隨時顯示在 Windows 桌面上。**
+**讓 Codex 剩餘額度，隨時顯示在 Windows 或 Mac 桌面上。**
 
 [English](README.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md)
 
-**[⬇ 下載 Windows 安裝程式](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/Codex-Glass-0.5.2-Setup-x64.exe)** · [可攜版與全部下載](https://github.com/qyyzclthsay/Codex-Glass/releases/latest)
+| Windows | Mac · Apple 晶片 | Mac · Intel |
+| :---: | :---: | :---: |
+| **[⬇ 下載安裝程式](https://github.com/qyyzclthsay/Codex-Glass/releases/download/v0.5.2/Codex-Glass-0.5.2-Setup-x64.exe)** | **[⬇ 下載 DMG](https://github.com/qyyzclthsay/Codex-Glass/releases/download/v0.6.0-beta.1/Codex-Glass-0.6.0-beta.1-macOS-arm64.dmg)** | **[⬇ 下載 DMG](https://github.com/qyyzclthsay/Codex-Glass/releases/download/v0.6.0-beta.1/Codex-Glass-0.6.0-beta.1-macOS-x86_64.dmg)** |
+| Windows 10 / 11 · x64 | macOS 13+ · M 系列晶片 | macOS 13+ · Intel 晶片 |
+| 穩定版 · 0.5.2 | 預覽版 · 0.6.0-beta.1 | 預覽版 · 0.6.0-beta.1 |
+
+[可攜版、ZIP 與全部下載](https://github.com/qyyzclthsay/Codex-Glass/releases) · [Mac 安裝說明與截圖](docs/MACOS.md#繁體中文)
 
 **免費開源 · 監控不額外消耗 Token · 不向開發者上傳個人資訊**
 
-<sub>Windows 10 / 11 · x64 · 須在本機安裝官方 Codex，並使用 ChatGPT 帳戶</sub>
+<sub>須在本機安裝官方 Codex，並使用 ChatGPT 帳戶。</sub>
 
 </div>
 
@@ -26,17 +32,17 @@
 2. 執行 Codex Glass，自動讀取本機可用的登入狀態；尚未登入時，點擊**使用 ChatGPT 登入**。
 3. 點擊雙視窗圖示進入迷你模式。滑鼠停留看數字，點擊展開，拖曳即可移動。
 
-**下載提示：**v0.5.2 尚未數位簽章，Edge 或 Windows 可能提示不常下載或未知的發行者。[查看簽章狀態](docs/CODE_SIGNING.md)。
+**下載提示：**Windows v0.5.2 尚未數位簽章；Mac 預覽版尚無 Apple 開發者簽章與公證，系統可能出現安全提示。[Windows 簽章狀態](docs/CODE_SIGNING.md) · [Mac 安裝與測試說明](docs/MACOS.md#繁體中文)。
 
 <details>
 <summary>可攜版、檔案大小與校驗值</summary>
 
 | 檔案 | 用途 |
 | --- | --- |
-| [Setup-x64.exe](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/Codex-Glass-0.5.2-Setup-x64.exe) | 推薦安裝版，約 128 KiB |
-| [Portable-x64.exe](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/Codex-Glass-0.5.2-Portable-x64.exe) | 單檔可攜版，約 192 KiB |
-| [Portable-x64.zip](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/Codex-Glass-0.5.2-Portable-x64.zip) | 可攜版與授權文件 |
-| [SHA256SUMS](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/SHA256SUMS-0.5.2.txt) | 下載檔案校驗值 |
+| [Setup-x64.exe](https://github.com/qyyzclthsay/Codex-Glass/releases/download/v0.5.2/Codex-Glass-0.5.2-Setup-x64.exe) | 推薦安裝版，約 128 KiB |
+| [Portable-x64.exe](https://github.com/qyyzclthsay/Codex-Glass/releases/download/v0.5.2/Codex-Glass-0.5.2-Portable-x64.exe) | 單檔可攜版，約 192 KiB |
+| [Portable-x64.zip](https://github.com/qyyzclthsay/Codex-Glass/releases/download/v0.5.2/Codex-Glass-0.5.2-Portable-x64.zip) | 可攜版與授權文件 |
+| [SHA256SUMS](https://github.com/qyyzclthsay/Codex-Glass/releases/download/v0.5.2/SHA256SUMS-0.5.2.txt) | 下載檔案校驗值 |
 
 已驗證 Windows 10 22H2；Windows 11 與混合 DPI 尚未完整驗證。
 
@@ -100,11 +106,11 @@
 <details>
 <summary>執行時占多少記憶體？</summary>
 
-C# / WPF 原生實作，使用 Windows 提供的 .NET Framework，不附帶 Electron、Chromium、Node.js 或 WebView2。安裝程式不包含系統框架與另行安裝的官方 Codex。
+Windows 使用 C# / WPF 與系統提供的 .NET Framework；Mac 使用 SwiftUI / AppKit。均不附帶 Electron、Chromium、Node.js 或網頁引擎。安裝程式不包含系統框架與另行安裝的官方 Codex。
 
 **下載大小不等於執行記憶體。** 最新實測數據與條件見 [驗證紀錄](docs/VALIDATION.md)。私有記憶體與工作集是不同指標，用量會隨系統、字型與操作改變。查詢結束後釋放 Codex 輔助程序；瀏覽器登入等待期間保留連線。
 
-v0.5.0 本機基準實測：私有記憶體 **84.4 MiB**，工作集 **119.9 MiB**，查詢後無輔助子程序。
+Windows v0.5.0 本機基準實測：私有記憶體 **84.4 MiB**，工作集 **119.9 MiB**，查詢後無輔助子程序。Mac 預覽版示範畫面短時間 RSS 採樣約 **49–52 MiB**，尚非真實帳戶監控實測，也不能與 Windows 私有記憶體直接比較。[Mac 測試詳情](docs/MACOS.md#繁體中文)。
 
 </details>
 
@@ -124,7 +130,7 @@ v0.5.0 本機基準實測：私有記憶體 **84.4 MiB**，工作集 **119.9 MiB
 - 額度重設時間不等於會員到期時間，會員日期明確標示為手動填寫。
 - 每日紀錄可能延遲；缺少資料以 `—` 顯示，不當作零；各額度池分別顯示。
 - 「重設」按鈕僅開啟官方用量頁面，不直接消耗重設機會。
-- 預設資料目錄：`%APPDATA%\codex-usage-widget`。本機快取未加密，請勿上傳個人資料目錄。
+- 預設資料目錄：Windows 為 `%APPDATA%\codex-usage-widget`；Mac 為 `~/Library/Application Support/Codex Glass`，另有應用程式偏好設定。本機快取未加密，請勿上傳個人資料目錄。
 
 實作細節見[安全與隱私說明](SECURITY.md)。
 
@@ -133,7 +139,7 @@ v0.5.0 本機基準實測：私有記憶體 **84.4 MiB**，工作集 **119.9 MiB
 <details>
 <summary>從原始碼建置</summary>
 
-使用 Windows PowerShell 與系統 .NET Framework 編譯器，無需 Node.js 或額外 SDK：
+Mac 請參閱[原生建置說明](docs/MACOS.md#build-and-verify)。Windows 使用 PowerShell 與系統 .NET Framework 編譯器，無需 Node.js 或額外 SDK：
 
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts/build-native.ps1 -Test
@@ -148,13 +154,13 @@ powershell -NoProfile -ExecutionPolicy Bypass -File scripts/qa-native.ps1
 | `CODEX_GLASS_CODEX_PATH` | 指定官方 Codex 執行檔 |
 | `CODEX_GLASS_DATA_DIR` | 指定元件資料目錄 |
 
-GitHub Actions 自動建置與測試；Release 由維護者發布。`native/` 是目前實作；`src/`、`tests/` 保留早期 Electron 參考原始碼，不編入目前程式。
+GitHub Actions 自動建置與測試；Release 由維護者發布。`native/` 是 Windows 原始碼，`macos/` 是 Mac 原始碼；`src/`、`tests/` 保留早期 Electron 參考原始碼，不編入目前程式。
 
 </details>
 
 ## 回饋與參與
 
-遇到問題或有新想法？歡迎[提交 Issue](https://github.com/qyyzclthsay/Codex-Glass/issues)，附上 Windows 版本、軟體版本與重現步驟；截圖請隱去個人資訊。
+遇到問題或有新想法？歡迎[提交 Issue](https://github.com/qyyzclthsay/Codex-Glass/issues)，附上系統版本、晶片類型、軟體版本與重現步驟；截圖請隱去個人資訊。
 
 MIT · 社群獨立專案，非 OpenAI 官方產品。服務 Logo 僅用於識別受監控的服務。
 

@@ -11,6 +11,11 @@ retrieved from commit `54f55c412f18b835fc10b95f1497dadb16df5584`. Pulse's Apache
 license accompanies this resource in `licenses/Pulse-Apache-2.0.txt`.
 Trademark use is distinct from that source license; see https://openai.com/brand/.
 
+The macOS preview reuses that SVG and a derived native vector path in
+`macos/Sources/CodexGlass/LogoPath.swift`. The same attribution, source license,
+and trademark restrictions apply. SwiftUI, AppKit, Foundation, Combine, CryptoKit,
+ServiceManagement and UserNotifications are Apple platform frameworks, not vendored libraries.
+
 Version 0.4 uses Windows-provided .NET Framework and WPF. These Microsoft system
 components are not redistributed in the application packages. NSIS is used to produce
 the installer; its license is documented at https://nsis.sourceforge.io/License.

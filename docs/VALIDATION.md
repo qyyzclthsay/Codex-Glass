@@ -1,4 +1,26 @@
-# Validation record — native update 2026-09-20
+# Validation record
+
+## macOS 0.6.0-beta.1 — 2026-09-23
+
+- [macOS CI run 35828562270](https://github.com/qyyzclthsay/Codex-Glass/actions/runs/35828562270),
+  source `552433c2f244826ecd14e7f8d50ccc002f7de2f0`: both Apple Silicon and Intel
+  compiled, passed 28 core/protocol tests, and produced verified ad-hoc-signed DMG/ZIP packages.
+- Packaged-app startup succeeded with SwiftPM's original resource directory hidden.
+  Nine screenshots per architecture cover three languages, light/dark overview,
+  settings, hidden/revealed mini labels and 7/30-day charts. Overview, settings,
+  dark mode, mini and chart screenshots were visually reviewed on Apple Silicon.
+- Downloaded DMG/ZIP checksums matched the manifests; Mach-O CPU types matched
+  their filenames. Packages contain the executable, localization/resource bundle and licenses.
+- Separate demo overview RSS samples at approximately 2/7/12 seconds:
+  Apple Silicon **51.77 / 51.72 / 50.30 MiB**, Intel **50.86 / 50.83 / 49.38 MiB**.
+  No account or network was used; no child processes remained. These short samples
+  do not measure real-account polling, helper peaks or long-running use, and cannot
+  be compared directly with the Windows private-memory numbers below.
+- DMG sizes: Apple Silicon **907,268 bytes**, Intel **960,197 bytes**.
+  Unpacked logical app-file totals: **1,924,433** / **1,966,593 bytes**, respectively.
+- Remaining desktop validation: fresh OAuth/real-account queries, macOS 13,
+  notification prompts, login items, physical dragging and multiple monitors.
+  Distribution has no Developer ID signature or notarization. This is a preview.
 
 ## v0.5.2 compact token counts
 
