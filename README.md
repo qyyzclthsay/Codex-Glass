@@ -14,6 +14,8 @@
 
 <sub>Windows 10 / 11 · x64 · Requires locally installed official Codex and a ChatGPT account</sub>
 
+[macOS native preview — Apple Silicon & Intel](docs/MACOS.md)
+
 </div>
 
 <table><tr><td align="center" width="22%"><b>Stay in view</b><br><br><img src="assets/preview-ring.png" width="92" alt="Stay in view · Demo"></td><td align="center" width="22%"><b>Hover for numbers</b><br><br><img src="assets/preview-ring-hover.png" width="92" alt="Hover for numbers · Demo"></td><td align="center" width="56%"><b>Click to expand</b><br><img src="assets/preview-en.png" width="240" alt="Click to expand · Demo"></td></tr></table>

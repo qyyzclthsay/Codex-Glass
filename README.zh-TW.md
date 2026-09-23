@@ -14,6 +14,8 @@
 
 <sub>Windows 10 / 11 · x64 · 須在本機安裝官方 Codex，並使用 ChatGPT 帳戶</sub>
 
+[macOS 原生預覽版 — Apple 晶片與 Intel](docs/MACOS.md#繁體中文)
+
 </div>
 
 <table><tr><td align="center" width="22%"><b>桌面常駐</b><br><br><img src="assets/preview-ring.png" width="92" alt="桌面常駐 · Demo"></td><td align="center" width="22%"><b>停留查看數字</b><br><br><img src="assets/preview-ring-hover.png" width="92" alt="停留查看數字 · Demo"></td><td align="center" width="56%"><b>點擊展開用量</b><br><img src="assets/preview-zh-TW.png" width="240" alt="點擊展開用量 · Demo"></td></tr></table>

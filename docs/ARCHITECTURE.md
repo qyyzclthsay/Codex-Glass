@@ -1,5 +1,14 @@
 # Native architecture (v0.4.0)
 
+## macOS preview (0.6.0-beta.1)
+
+`macos/` is a separate native SwiftUI/AppKit executable using the same official
+account protocol as the Windows implementation. `CodexGlassCore` owns typed data,
+normalization, local storage and a bounded, short-lived JSON-RPC subprocess.
+The executable owns native windows, the menu-bar item, compact ring drawing,
+notifications and login-item preferences. There are no external Swift packages.
+See [macOS setup and validation](MACOS.md). Windows source and packaging stay separate.
+
 - `native/Core.cs`: bounded JSON helpers, normalization, account hashing, cache/date validation,
   atomic storage and async JSON-RPC over a directly spawned hidden Codex process.
 - `native/Service.cs`: serialized read transactions, verified account boundaries, short in-memory

@@ -1,0 +1,45 @@
+name: Native macOS build
+on:
+  push:
+    paths: ['macos/**', 'scripts/*macos*', '.github/workflows/macos.yml']
+  pull_request:
+    paths: ['macos/**', 'scripts/*macos*', '.github/workflows/macos.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: macos-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: macos-14
+            arch: arm64
+          - runner: macos-15-intel
+            arch: x86_64
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify architecture and tools
+        run: |
+          test "$(uname -m)" = '${{ matrix.arch }}'
+          swift --version
+          xcodebuild -version
+      - name: Build, test and package
+        run: bash scripts/build-macos.sh
+      - name: Smoke test the app bundle and sample demo memory
+        run: bash scripts/qa-macos.sh
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: codex-glass-macos-${{ matrix.arch }}
+          path: |
+            dist/macos-${{ matrix.arch }}/*.dmg
+            dist/macos-${{ matrix.arch }}/*.zip
+            dist/macos-${{ matrix.arch }}/SHA256SUMS*.txt
+            .qa/macos-${{ matrix.arch }}/
+          if-no-files-found: warn
