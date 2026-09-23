@@ -16,7 +16,18 @@ trap restore EXIT
 python3 - "$APP/Contents/MacOS/CodexGlass" "$QA" <<'PY'
 import json, os, subprocess, sys, time
 exe, qa = sys.argv[1:]
-subprocess.run([exe, '--demo', '--smoke-test'], check=True, timeout=90)
+try:
+    subprocess.run([exe, '--demo', '--smoke-test'], check=True, timeout=90)
+except (subprocess.CalledProcessError, subprocess.TimeoutExpired):
+    # Only the isolated demo is launched by the debugger; no real account data.
+    with open(os.path.join(qa, 'smoke-backtrace.txt'), 'w') as trace:
+        try:
+            subprocess.run(['lldb', '--batch', '-o', 'run', '-o', 'thread backtrace all',
+                            '--', exe, '--demo', '--smoke-test'], stdout=trace,
+                           stderr=subprocess.STDOUT, timeout=60)
+        except subprocess.TimeoutExpired:
+            trace.write('\nDebugger timed out.\n')
+    raise
 screens = [name for name in os.listdir(qa) if name.endswith('.png')]
 if len(screens) < 3:
     raise SystemExit('Smoke test must produce overview, settings and mini screenshots')

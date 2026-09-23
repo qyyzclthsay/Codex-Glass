@@ -95,6 +95,7 @@ final class AppCoordinator: NSObject, ObservableObject, NSApplicationDelegate, N
         mainWindow.title = "Codex Glass"
         mainWindow.titleVisibility = .hidden
         mainWindow.titlebarAppearsTransparent = true
+        mainWindow.isMovableByWindowBackground = true
         mainWindow.isReleasedWhenClosed = false
         mainWindow.contentMinSize = NSSize(width: 320, height: 360)
         mainWindow.contentMaxSize = NSSize(width: 900, height: 1400)
@@ -168,6 +169,11 @@ final class AppCoordinator: NSObject, ObservableObject, NSApplicationDelegate, N
         showMain()
     }
     @objc func quit() { NSApp.terminate(nil) }
+
+    func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
+        if store.settings.compact { showCompact() } else { showMain() }
+        return true
+    }
 
     func showMain(preserveSettings: Bool = false) {
         if !preserveSettings { showingSettings = false }

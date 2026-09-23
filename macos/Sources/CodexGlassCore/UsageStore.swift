@@ -5,8 +5,13 @@ import Combine
 public final class UsageStore: ObservableObject {
     @Published public var settings: AppSettings {
         didSet {
-            settings = settings.validated()
-            if !demo { disk.write("settings", settings) }
+            // Published wraps the setter: an unconditional assignment here can
+            // re-enter didSet until the stack overflows, even for unchanged data.
+            let normalized = settings.validated()
+            if normalized != settings {
+                settings = normalized
+            }
+            if !demo { disk.write("settings", normalized) }
         }
     }
     @Published public private(set) var snapshot: UsageSnapshot?

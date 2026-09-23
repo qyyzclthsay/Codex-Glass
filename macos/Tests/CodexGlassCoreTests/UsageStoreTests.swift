@@ -1,4 +1,5 @@
 import XCTest
+import Combine
 @testable import CodexGlassCore
 
 @MainActor
@@ -210,6 +211,26 @@ final class UsageStoreTests: XCTestCase {
         await refresh.value
         XCTAssertNil(store.snapshot)
         XCTAssertNil(store.daily)
+        store.shutdown()
+    }
+
+    @MainActor func testPublishedSettingsMutationNormalizesWithoutRecursionAndPersists() {
+        let rpc = FixtureTransport()
+        let folder = directory()
+        let store = UsageStore(dataDirectory: folder, transport: rpc)
+        var emissions = 0
+        let subscription = store.objectWillChange.sink { emissions += 1 }
+        store.settings.language = "zh"
+        store.settings.compact = false
+        store.settings.mainWidth = 1
+        XCTAssertEqual(store.settings.language, "zh")
+        XCTAssertEqual(store.settings.mainWidth, 320)
+        XCTAssertLessThan(emissions, 10, "One mutation must not cause an observer feedback loop")
+        let stored = DiskStore(directory: folder).read("settings", as: AppSettings.self)
+        XCTAssertEqual(stored?.language, "zh")
+        XCTAssertEqual(stored?.mainWidth, 320)
+        XCTAssertTrue(rpc.calls.isEmpty)
+        subscription.cancel()
         store.shutdown()
     }
 }
