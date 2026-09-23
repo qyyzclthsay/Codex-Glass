@@ -4,17 +4,21 @@
 
 # Codex Glass
 
-**Your Codex allowance, right on your Windows desktop.**
+**Your Codex allowance, right on your Windows or Mac desktop.**
 
 [English](README.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md)
 
-**[⬇ Download for Windows](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/Codex-Glass-0.5.2-Setup-x64.exe)** · [Portable & all downloads](https://github.com/qyyzclthsay/Codex-Glass/releases/latest)
+| Windows | Mac · Apple Silicon | Mac · Intel |
+| :---: | :---: | :---: |
+| **[⬇ Installer](https://github.com/qyyzclthsay/Codex-Glass/releases/download/v0.5.2/Codex-Glass-0.5.2-Setup-x64.exe)** | **[⬇ Download DMG](https://github.com/qyyzclthsay/Codex-Glass/releases/download/v0.6.0-beta.1/Codex-Glass-0.6.0-beta.1-macOS-arm64.dmg)** | **[⬇ Download DMG](https://github.com/qyyzclthsay/Codex-Glass/releases/download/v0.6.0-beta.1/Codex-Glass-0.6.0-beta.1-macOS-x86_64.dmg)** |
+| Windows 10 / 11 · x64 | macOS 13+ · M-series | macOS 13+ · Intel |
+| Stable · 0.5.2 | Preview · 0.6.0-beta.1 | Preview · 0.6.0-beta.1 |
+
+[Portable, ZIP & all downloads](https://github.com/qyyzclthsay/Codex-Glass/releases) · [Mac setup & screenshots](docs/MACOS.md)
 
 **Free & open source · No additional AI tokens · No personal data sent to the developer**
 
-<sub>Windows 10 / 11 · x64 · Requires locally installed official Codex and a ChatGPT account</sub>
-
-[macOS native preview — Apple Silicon & Intel](docs/MACOS.md)
+<sub>Requires locally installed official Codex and a ChatGPT account.</sub>
 
 </div>
 
@@ -28,17 +32,17 @@
 2. Run Codex Glass. It reads an available local sign-in automatically; otherwise, choose **Sign in with ChatGPT**.
 3. Use the overlapping-windows icon for compact mode. Hover to see numbers, click to expand, or drag to move.
 
-**Download notice:** v0.5.2 is unsigned, so Edge or Windows may show a download or unknown-publisher warning. [Signing status](docs/CODE_SIGNING.md).
+**Download notice:** Windows v0.5.2 is unsigned; the Mac preview has no Apple Developer ID signature or notarization. Your system may show a security warning. [Windows signing status](docs/CODE_SIGNING.md) · [Mac installation & testing status](docs/MACOS.md#install-and-connect).
 
 <details>
 <summary>Portable versions, file sizes & checksums</summary>
 
 | File | Purpose |
 | --- | --- |
-| [Setup-x64.exe](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/Codex-Glass-0.5.2-Setup-x64.exe) | Recommended installer, about 128 KiB |
-| [Portable-x64.exe](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/Codex-Glass-0.5.2-Portable-x64.exe) | Standalone executable, about 192 KiB |
-| [Portable-x64.zip](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/Codex-Glass-0.5.2-Portable-x64.zip) | Portable executable and licenses |
-| [SHA256SUMS](https://github.com/qyyzclthsay/Codex-Glass/releases/latest/download/SHA256SUMS-0.5.2.txt) | Download checksums |
+| [Setup-x64.exe](https://github.com/qyyzclthsay/Codex-Glass/releases/download/v0.5.2/Codex-Glass-0.5.2-Setup-x64.exe) | Recommended installer, about 128 KiB |
+| [Portable-x64.exe](https://github.com/qyyzclthsay/Codex-Glass/releases/download/v0.5.2/Codex-Glass-0.5.2-Portable-x64.exe) | Standalone executable, about 192 KiB |
+| [Portable-x64.zip](https://github.com/qyyzclthsay/Codex-Glass/releases/download/v0.5.2/Codex-Glass-0.5.2-Portable-x64.zip) | Portable executable and licenses |
+| [SHA256SUMS](https://github.com/qyyzclthsay/Codex-Glass/releases/download/v0.5.2/SHA256SUMS-0.5.2.txt) | Download checksums |
 
 Validated on Windows 10 22H2; Windows 11 and mixed-DPI configurations are not fully tested.
 
@@ -102,11 +106,11 @@ You can complete your first sign-in from the widget, provided official Codex is 
 <details>
 <summary>How much memory does it use?</summary>
 
-C# / WPF using the Windows-provided .NET Framework. No bundled Electron, Chromium, Node.js or WebView2. Downloads exclude the system framework and the separately installed official Codex runtime.
+Windows uses C# / WPF and the system .NET Framework; macOS uses SwiftUI / AppKit. Neither bundles Electron, Chromium, Node.js or a web view. Downloads exclude system frameworks and the separately installed official Codex runtime.
 
 **Download size is not RAM usage.** See the [validation record](docs/VALIDATION.md) for current measurements and conditions. Private memory and working set are different metrics; usage varies with system, fonts and activity. The Codex helper exits after queries and stays connected only while browser sign-in is pending.
 
-Reference measurement (v0.5.0, compact mode): **84.4 MiB private memory**, **119.9 MiB working set**, with no helper child after the query.
+Windows reference measurement (v0.5.0, compact mode): **84.4 MiB private memory**, **119.9 MiB working set**, with no helper child after the query. Mac preview demo RSS samples: **49–52 MiB**; these short samples do not measure real-account polling and are not directly comparable to Windows private memory. [Mac measurement details](docs/MACOS.md#preview-validation--2026-09-23).
 
 </details>
 
@@ -126,7 +130,7 @@ The widget does not receive your password or scan conversations. Official Codex 
 - Quota reset dates are not membership expiry dates. Membership dates are explicitly manual.
 - Daily reports may be delayed. Missing values remain `—`, distinct from zero. Pools stay separate.
 - Reset opens the official usage page; it does not consume a reset credit.
-- Default storage: `%APPDATA%\codex-usage-widget`. Local caches are not encrypted. Keep personal data directories out of public reports.
+- Default storage: Windows `%APPDATA%\codex-usage-widget`; Mac `~/Library/Application Support/Codex Glass`, plus app preferences. Local caches are not encrypted. Keep personal data directories out of public reports.
 
 See [Security & privacy](SECURITY.md) for implementation details.
 
@@ -135,7 +139,7 @@ See [Security & privacy](SECURITY.md) for implementation details.
 <details>
 <summary>Build from source</summary>
 
-Use Windows PowerShell and the system .NET Framework compiler. No Node.js or extra SDK required:
+For macOS, follow the [native Mac build guide](docs/MACOS.md#build-and-verify). For Windows, use PowerShell and the system .NET Framework compiler. No Node.js or extra SDK required:
 
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts/build-native.ps1 -Test
@@ -150,13 +154,13 @@ Install NSIS for packaging, then run `scripts/build-native.ps1 -Package`. Output
 | `CODEX_GLASS_CODEX_PATH` | Path to the official Codex executable |
 | `CODEX_GLASS_DATA_DIR` | Widget data directory |
 
-GitHub Actions builds and tests; maintainers publish Releases. The current implementation is in `native/`. Historical Electron code in `src/` and `tests/` is retained for reference and excluded from the current binary.
+GitHub Actions builds and tests; maintainers publish Releases. Windows source is in `native/`, Mac source in `macos/`. Historical Electron code in `src/` and `tests/` is retained for reference and excluded from the current binaries.
 
 </details>
 
 ## Feedback & contributing
 
-Found a bug or have an idea? [Open an issue](https://github.com/qyyzclthsay/Codex-Glass/issues). Include your Windows version, widget version and steps to reproduce; remove personal information from screenshots.
+Found a bug or have an idea? [Open an issue](https://github.com/qyyzclthsay/Codex-Glass/issues). Include your operating system, chip/architecture, widget version and steps to reproduce; remove personal information from screenshots.
 
 MIT · Independent community project, not an official OpenAI product. Service logos identify the monitored service.
 

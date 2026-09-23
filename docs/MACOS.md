@@ -35,9 +35,15 @@ Monitoring reads existing statistics. It makes no AI model calls and consumes no
 
 ## Install and connect
 
-Preview packages are attached to the successful [macOS build](https://github.com/qyyzclthsay/Codex-Glass/actions/runs/35828562270).
-Choose `codex-glass-macos-arm64` or `codex-glass-macos-x86_64` under **Artifacts**
-(GitHub sign-in required), extract the artifact, then open its `dist` folder.
+Download the matching DMG directly; no GitHub sign-in is required:
+
+| Mac | Download |
+| --- | --- |
+| Apple Silicon (M-series) | [Apple Silicon DMG · 0.91 MB](https://github.com/qyyzclthsay/Codex-Glass/releases/download/v0.6.0-beta.1/Codex-Glass-0.6.0-beta.1-macOS-arm64.dmg) |
+| Intel | [Intel DMG · 0.96 MB](https://github.com/qyyzclthsay/Codex-Glass/releases/download/v0.6.0-beta.1/Codex-Glass-0.6.0-beta.1-macOS-x86_64.dmg) |
+
+[ZIP packages, SHA-256 checksums & release notes](https://github.com/qyyzclthsay/Codex-Glass/releases/tag/v0.6.0-beta.1).
+Check **Apple menu → About This Mac**: an Apple M-series chip uses `arm64`; an Intel processor uses `x86_64`.
 
 Open the matching DMG and drag **Codex Glass** to **Applications**, or extract the app from the ZIP.
 Launch it after installing official Codex. An available local ChatGPT sign-in is read automatically;
@@ -119,7 +125,8 @@ bytes, not filesystem allocation. See [validation history](VALIDATION.md).
 当前由 GitHub 的 Mac 环境进行构建与自动验证。真实账户登录、多显示器、通知和登录时启动
 仍需 Mac 实机确认。两种芯片均已通过 28 项核心测试和安装包启动检查；DMG 不到 1 MB，
 演示主界面短时内存采样约 49–52 MiB。这不是实际账户监控或长期运行的内存上限。
-安装包位于上方构建链接的 Artifacts 中，需要登录 GitHub 下载。
+在[发布页](https://github.com/qyyzclthsay/Codex-Glass/releases/tag/v0.6.0-beta.1)直接下载安装包，无需登录 GitHub。
+Apple 菜单 →「关于本机」中显示 M 系列芯片的选 `arm64`，Intel 处理器选 `x86_64`。
 
 ## 繁體中文
 
@@ -135,4 +142,5 @@ bytes, not filesystem allocation. See [validation history](VALIDATION.md).
 目前由 GitHub 的 Mac 環境執行建置與自動驗證。真實帳戶登入、多螢幕、通知及登入時啟動
 仍須 Mac 實機確認。兩種晶片均已通過 28 項核心測試及套件啟動檢查；DMG 不到 1 MB，
 示範主畫面短時間記憶體採樣約 49–52 MiB。這不是實際帳戶監控或長期執行的記憶體上限。
-安裝檔位於上方建置連結的 Artifacts 中，須登入 GitHub 下載。
+在[發佈頁](https://github.com/qyyzclthsay/Codex-Glass/releases/tag/v0.6.0-beta.1)直接下載安裝檔，無須登入 GitHub。
+Apple 選單 →「關於這台 Mac」中顯示 M 系列晶片的選 `arm64`，Intel 處理器選 `x86_64`。
