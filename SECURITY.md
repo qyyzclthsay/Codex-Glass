@@ -16,7 +16,8 @@ This project uses a locally installed official Codex runtime. Keep that runtime 
 Authentication happens in the system browser through Codex's own login flow. The widget
 does not receive your password, copy auth.json, store tokens, or run AI conversations.
 
-The current app has native WPF controls and no browser engine, webpage renderer or web IPC.
+Windows uses native WPF controls; macOS uses SwiftUI and AppKit. Neither embeds a
+browser engine, webpage renderer or web IPC.
 Login URLs must be HTTPS on exact allowlisted official hosts; other external actions
 use fixed official URLs. The Codex child process starts directly without a shell, with
 hidden stdio, bounded reply buffers, request timeouts and EOF cleanup. It exits after

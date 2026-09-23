@@ -1,4 +1,6 @@
-# Code signing policy
+# Windows code signing policy
+
+For the macOS preview's ad-hoc signature and notarization status, see [macOS installation](MACOS.md#install-and-connect).
 
 **Status: v0.5.2 downloads are unsigned. No signing provider or Microsoft Store
 listing has been approved for this project yet.** Adding this document and a

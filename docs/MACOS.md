@@ -6,6 +6,10 @@ Version **0.6.0-beta.1** is a macOS preview; the Windows release remains 0.5.2.
 
 [English](#requirements) · [简体中文](#简体中文) · [繁體中文](#繁體中文)
 
+<table><tr><td align="center"><b>Allowance & daily tokens</b><br><img src="../assets/macos/tokens-zh-30.png" width="320" alt="Native Mac overview with a 30-day chart, daily values in 万 and totals in 亿. Demo data."></td><td align="center"><b>Quiet at rest</b><br><img src="../assets/macos/mini-idle.png" width="92" alt="Floating Mac ring with labels hidden"><br><b>Hover for details</b><br><img src="../assets/macos/mini-hover.png" width="92" alt="Floating Mac ring with percentage and period revealed"></td></tr></table>
+
+Screenshots are rendered by the packaged Mac app using artificial demo data.
+
 ## Requirements
 
 - macOS 13 Ventura or newer.
@@ -30,6 +34,10 @@ Version **0.6.0-beta.1** is a macOS preview; the Windows release remains 0.5.2.
 Monitoring reads existing statistics. It makes no AI model calls and consumes no additional AI tokens.
 
 ## Install and connect
+
+Preview packages are attached to the successful [macOS build](https://github.com/qyyzclthsay/Codex-Glass/actions/runs/35828562270).
+Choose `codex-glass-macos-arm64` or `codex-glass-macos-x86_64` under **Artifacts**
+(GitHub sign-in required), extract the artifact, then open its `dist` folder.
 
 Open the matching DMG and drag **Codex Glass** to **Applications**, or extract the app from the ZIP.
 Launch it after installing official Codex. An available local ChatGPT sign-in is read automatically;
@@ -80,6 +88,23 @@ hosted CI on newer macOS is not a substitute for testing macOS 13 on a real desk
 Multi-monitor behavior, login items, notification permission prompts and live account sign-in
 still need hands-on Mac verification before declaring a stable release.
 
+### Preview validation — 2026-09-23
+
+[Source commit `552433c`](https://github.com/qyyzclthsay/Codex-Glass/commit/552433c2f244826ecd14e7f8d50ccc002f7de2f0)
+passed 28 core/protocol tests on **each architecture**, release compilation, signature verification
+and packaged-app startup. Nine screenshots per architecture cover three languages, dark mode,
+settings, mini states and 7 / 30-day charts. SHA-256 manifests and executable architectures were checked after download.
+
+| Package | DMG download | Unpacked app files | Demo RSS samples |
+| --- | ---: | ---: | ---: |
+| Apple Silicon | 907,268 bytes | 1,924,433 bytes | 50.30–51.77 MiB |
+| Intel | 960,197 bytes | 1,966,593 bytes | 49.38–50.86 MiB |
+
+RSS was sampled at approximately 2, 7 and 12 seconds after a separate demo overview launch,
+with no account connected and no child processes. These short samples are **not a memory limit**
+and exclude the official Codex helper used during authenticated queries. File totals are logical
+bytes, not filesystem allocation. See [validation history](VALIDATION.md).
+
 ## 简体中文
 
 这是基于 Windows 0.5.2 功能开发的 **macOS 原生预览版**，使用 SwiftUI / AppKit，
@@ -92,7 +117,9 @@ still need hands-on Mac verification before declaring a stable release.
 系统可能提示无法验证开发者；软件不会修改系统安全设置。
 
 当前由 GitHub 的 Mac 环境进行构建与自动验证。真实账户登录、多显示器、通知和登录时启动
-仍需 Mac 实机确认。不要将预览版或演示模式内存数据描述成已经完成全部实测的正式版。
+仍需 Mac 实机确认。两种芯片均已通过 28 项核心测试和安装包启动检查；DMG 不到 1 MB，
+演示主界面短时内存采样约 49–52 MiB。这不是实际账户监控或长期运行的内存上限。
+安装包位于上方构建链接的 Artifacts 中，需要登录 GitHub 下载。
 
 ## 繁體中文
 
@@ -106,4 +133,6 @@ still need hands-on Mac verification before declaring a stable release.
 系統可能提示無法驗證開發者；軟體不會修改系統安全設定。
 
 目前由 GitHub 的 Mac 環境執行建置與自動驗證。真實帳戶登入、多螢幕、通知及登入時啟動
-仍須 Mac 實機確認。預覽版及示範模式記憶體數據不代表已完成正式版的全部實測。
+仍須 Mac 實機確認。兩種晶片均已通過 28 項核心測試及套件啟動檢查；DMG 不到 1 MB，
+示範主畫面短時間記憶體採樣約 49–52 MiB。這不是實際帳戶監控或長期執行的記憶體上限。
+安裝檔位於上方建置連結的 Artifacts 中，須登入 GitHub 下載。
