@@ -29,8 +29,14 @@ except (subprocess.CalledProcessError, subprocess.TimeoutExpired):
             trace.write('\nDebugger timed out.\n')
     raise
 screens = [name for name in os.listdir(qa) if name.endswith('.png')]
-if len(screens) < 3:
-    raise SystemExit('Smoke test must produce overview, settings and mini screenshots')
+required = {'overview-en.png', 'overview-zh.png', 'overview-zh-TW.png', 'overview-dark.png',
+            'settings.png', 'mini-hover.png', 'mini-idle.png', 'tokens-zh-7.png', 'tokens-zh-30.png'}
+if not required.issubset(screens):
+    raise SystemExit('Missing smoke screenshots: ' + ', '.join(sorted(required - set(screens))))
+with open(os.path.join(qa, 'ui-result.json')) as f:
+    ui_result = json.load(f)
+if not ui_result.get('success') or ui_result.get('chartRanges') != [7, 30]:
+    raise SystemExit('UI smoke checks did not complete both daily-chart ranges')
 samples = []
 process = subprocess.Popen([exe, '--demo', '--measure-demo'])
 try:

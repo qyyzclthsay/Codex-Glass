@@ -84,7 +84,11 @@ struct MainView: View {
                 otherPools(snapshot)
                 Divider()
                 DisclosureGroup(isExpanded: $controller.dailyOpen) {
-                    DailyView(store: store, now: controller.now).padding(.top, 14)
+                    DailyView(store: store, now: controller.now,
+                              smokeRange: controller.smoke ? controller.smokeChartRange : nil,
+                              smokeDay: controller.smoke ? controller.smokeChartDay : nil)
+                        .id(controller.smoke ? "smoke-\(controller.smokeChartRange)-\(controller.smokeChartDay ?? -1)" : "daily")
+                        .padding(.top, 14)
                 } label: {
                     Label(t("dailyTokens"), systemImage: "chart.bar.xaxis").font(.system(size: 12, weight: .medium))
                 }
@@ -254,6 +258,13 @@ struct DailyView: View {
     var now: Date
     @State private var range = 7
     @State private var selected: Int?
+
+    init(store: UsageStore, now: Date, smokeRange: Int? = nil, smokeDay: Int? = nil) {
+        self.store = store
+        self.now = now
+        _range = State(initialValue: smokeRange ?? 7)
+        _selected = State(initialValue: smokeDay)
+    }
     private var language: String { store.settings.language }
     private var days: [DailyRecord] { UsageMath.series(usage: store.daily, range: range, today: now) }
     private var total: Double? {

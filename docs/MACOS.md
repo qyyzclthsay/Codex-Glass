@@ -53,7 +53,9 @@ or asks for API keys. Account identifiers are hashed before being persisted.
 
 Settings and the quota cache live in `~/Library/Application Support/Codex Glass`.
 `CODEX_GLASS_DATA_DIR` can select a different profile. Files are local and unencrypted;
-daily token history stays in memory. See [Security](../SECURITY.md).
+daily token history stays in memory. Window positions and deduplicated reminder state
+use macOS application preferences (UserDefaults); reminder identifiers use hashed account IDs.
+See [Security](../SECURITY.md).
 
 ## Build and verify
 

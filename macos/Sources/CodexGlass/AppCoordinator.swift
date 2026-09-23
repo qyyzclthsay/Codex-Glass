@@ -24,6 +24,9 @@ final class AppCoordinator: NSObject, ObservableObject, NSApplicationDelegate, N
     @Published var showingSettings = false
     @Published var dailyOpen = false
     @Published var otherOpen = false
+    // Deterministic view state for screenshot QA; never used in normal operation.
+    @Published var smokeChartRange = 7
+    @Published var smokeChartDay: Int?
     @Published var now = Date()
     @Published var platformError: String?
     private(set) var mainWindow: NSWindow!
@@ -377,6 +380,18 @@ final class AppCoordinator: NSObject, ObservableObject, NSApplicationDelegate, N
             try await pauseForLayout()
             try capture(mainWindow, to: directory.appendingPathComponent("overview-en.png"))
             store.settings.language = "zh"
+            otherOpen = false
+            smokeChartRange = 7
+            smokeChartDay = 6
+            try await pauseForLayout()
+            try capture(mainWindow, to: directory.appendingPathComponent("tokens-zh-7.png"))
+            smokeChartRange = 30
+            smokeChartDay = 29
+            try await pauseForLayout()
+            try capture(mainWindow, to: directory.appendingPathComponent("tokens-zh-30.png"))
+            smokeChartRange = 7
+            smokeChartDay = nil
+            otherOpen = true
             try await pauseForLayout()
             try capture(mainWindow, to: directory.appendingPathComponent("overview-zh.png"))
             store.settings.language = "zh-TW"
@@ -398,7 +413,7 @@ final class AppCoordinator: NSObject, ObservableObject, NSApplicationDelegate, N
             guard mainWindow.styleMask.contains(.resizable), mainWindow.contentMinSize.width == 320,
                   miniWindow.contentView?.bounds.size == NSSize(width: 92, height: 126), !miniWindow.isOpaque,
                   t("title") != "title", AppResources.bundle.url(forResource: "icon", withExtension: "png") != nil else { throw SmokeError.failed("Window or bundled resource assertion failed") }
-            try "{\"success\":true,\"demoOnly\":true,\"screenshots\":7,\"languages\":3,\"resizable\":true,\"transparentMini\":true}".write(to: directory.appendingPathComponent("ui-result.json"), atomically: true, encoding: .utf8)
+            try "{\"success\":true,\"demoOnly\":true,\"screenshots\":9,\"languages\":3,\"chartRanges\":[7,30],\"resizable\":true,\"transparentMini\":true}".write(to: directory.appendingPathComponent("ui-result.json"), atomically: true, encoding: .utf8)
             store.shutdown()
             NSApp.stop(nil)
             exit(0)
